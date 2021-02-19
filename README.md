@@ -2,7 +2,7 @@
   <h1 align="center">Stonkmarket</h1>
   <br />
 
-  <body align"center">Made by Ankush, C.T, Syrus, Ty</body>
+ <h2 align="center">Made by Ankush, C.T, Syrus, Ty</h2>
 
   ## Description / Features
    Logs information collected from the STONKMARKET, and displays it to the user for them to make informed, and educated opinions on the stock that they want to YOLO on in Robinhood (#HOLD THE LINE)
@@ -28,9 +28,10 @@
   undefined
   <br />
   
-  ## Contact information
-  GitHub: [undefined](https://github.com/undefined)
+  ## GITHUBS
+GitHub: [inserthere](https://github.com/inserthere)
+GitHub: [inserthere](https://github.com/inserthere)
+GitHub: [inserthere](https://github.com/inserthere)
+GitHub: [Relten98](https://github.com/Relten98)
   <br />
   <br/>
-  Have any questions? feel free to email at: 
-      
