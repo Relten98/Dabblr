@@ -3,7 +3,7 @@
   <br />
 
  <h2 align="center">Made by Ankush, C.T, Syrus, Ty</h2>
-
+💎🤲 We just like the stock!
   ## Description / Features
    Logs information collected from the STONKMARKET, and displays it to the user for them to make informed, and educated opinions on the stock that they want to YOLO on in Robinhood (#HOLD THE LINE)
 
