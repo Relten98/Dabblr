@@ -1,0 +1,27 @@
+{
+  "name": "dabblr",
+  "version": "1.0.0",
+  "description": "displays tutorial videos that users can vote on",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Relten98/Dabblr.git"
+  },
+  "keywords": [
+    "tuts"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Relten98/Dabblr/issues"
+  },
+  "homepage": "https://github.com/Relten98/Dabblr#readme"
+}

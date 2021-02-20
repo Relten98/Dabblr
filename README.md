@@ -1,11 +1,9 @@
-
   <h1 align="center">Dabblr</h1>
   <br />
-\
+  
   Made by Ankush, C.T, Syrus, Ty
 
   ## Description / Features
-
 
   ## Installation
    No installation required
@@ -27,10 +25,11 @@
   ## Tests
   undefined
   <br />
-  
-  ## Contact information
-  GitHub: [undefined](https://github.com/undefined)
+
+  ## GITHUBS
+GitHub: [inserthere](https://github.com/inserthere)
+GitHub: [inserthere](https://github.com/inserthere)
+GitHub: [inserthere](https://github.com/inserthere)
+GitHub: [Relten98](https://github.com/Relten98)
   <br />
   <br/>
-  Have any questions? feel free to email at: 
-      
