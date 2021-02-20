@@ -1,12 +1,9 @@
-
-  <h1 align="center">Stonkmarket</h1>
+  <h1 align="center">Dabblr</h1>
   <br />
-
- <h2 align="center">Made by Ankush, C.T, Syrus, Ty</h2>
-💎🤲 We just like the stock!
+  
+  Made by Ankush, C.T, Syrus, Ty
 
   ## Description / Features
-   Logs information collected from the STONKMARKET, and displays it to the user for them to make informed, and educated opinions on the stock that they want to YOLO on in Robinhood (#HOLD THE LINE)
 
   ## Installation
    No installation required
@@ -28,7 +25,7 @@
   ## Tests
   undefined
   <br />
-  
+
   ## GITHUBS
 GitHub: [inserthere](https://github.com/inserthere)
 GitHub: [inserthere](https://github.com/inserthere)
