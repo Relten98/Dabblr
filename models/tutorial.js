@@ -23,14 +23,14 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         TopicID: {
-            type: DataTypes.TEXT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 len: [1],
             },
         },
         submittedBy: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 len: [1],

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         parentTopicID: {
-            type: DataTypes.TEXT,
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
                 len: [1],
