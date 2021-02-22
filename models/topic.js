@@ -16,5 +16,11 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
     })
+
+    Topic.associate = (models) => {
+        Topic.hasMany(models.Post, {
+            onDelete: 'cascade',
+        })
+    }
     return Topic
 }
