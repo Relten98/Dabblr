@@ -37,11 +37,11 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
     })
-    // Tutorial.associate = (models) => {
-    //     Tutorial.belongsTo(models.Topic, {
-    //         foreignKey: 'fk_topicID',
-    //         onDelete: 'CASCADE',
-    //     })
-    // }
+    Tutorial.associate = (models) => {
+        models.tutorial.belongsTo(models.topic, {
+            foreignKey: 'fk_topicID',
+            onDelete: 'CASCADE',
+        })
+    }
     return Tutorial
 }

@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Topic.associate = (models) => {
-        Topic.hasMany(models.Post, {
+        console.log('models ', models)
+        models.topic.hasMany(models.tutorial, {
             onDelete: 'cascade',
         })
     }
