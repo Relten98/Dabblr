@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Topic.associate = (models) => {
-        console.log('models ', models)
         models.topic.hasMany(models.tutorial, {
+            foreignKey: 'fk_topicID',
             onDelete: 'cascade',
         })
     }

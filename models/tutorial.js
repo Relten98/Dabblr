@@ -42,6 +42,13 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'fk_topicID',
             onDelete: 'CASCADE',
         })
+        models.tutorial.hasMany(models.vote, {
+            foreignKey: 'fk_tutorialID',
+            onDelete: 'CASCADE',
+        })
+        models.tutorial.belongsTo(models.user, {
+            foreignKey: 'fk_userID',
+        })
     }
     return Tutorial
 }

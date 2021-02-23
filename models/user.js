@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let User = sequelize.define('user', {
+    const User = sequelize.define('user', {
         UserName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,5 +21,13 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     })
+    User.associate = (models) => {
+        models.user.hasMany(models.tutorial, {
+            foreignKey: 'fk_userID',
+        })
+        models.user.hasMany(models.vote, {
+            foreignKey: 'fk_userID',
+        })
+    }
     return User
 }

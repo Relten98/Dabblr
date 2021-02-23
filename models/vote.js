@@ -23,5 +23,11 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
     })
+    Vote.associate = (models) => {
+        models.vote.belongsTo(models.tutorial, {
+            foreignKey: 'fk_tutorialID',
+            onDelete: 'CASCADE',
+        })
+    }
     return Vote
 }
