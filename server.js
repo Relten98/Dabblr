@@ -1,5 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const Article = require('./components/Article');
+
 
 const PORT = process.env.PORT || 8080;
 
@@ -12,10 +14,14 @@ app.set('view engine', 'handlebars');
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }))
   .use(express.json())
-  .use(express.static(__dirname + '/public'));
+  // .use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
-  res.render('index');
+app.get('/', async (req, res) => {
+  let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32);
+  let summary = await wiki.getSummary(true)
+  res.render('index', {
+    summary: summary
+  });
 })
 
 app.listen(PORT, () =>
