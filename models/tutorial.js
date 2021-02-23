@@ -22,13 +22,6 @@ module.exports = (sequelize, DataTypes) => {
                 isURL: true,
             },
         },
-        TopicID: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1],
-            },
-        },
         submittedBy: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -44,7 +37,6 @@ module.exports = (sequelize, DataTypes) => {
         })
         models.tutorial.hasMany(models.vote, {
             foreignKey: 'fk_tutorialID',
-            onDelete: 'CASCADE',
         })
         models.tutorial.belongsTo(models.user, {
             foreignKey: 'fk_userID',

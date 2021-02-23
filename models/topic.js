@@ -8,16 +8,12 @@ module.exports = (sequelize, DataTypes) => {
                 len: [1],
             },
         },
-        parentTopicID: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1],
-            },
-        },
     })
 
     Topic.associate = (models) => {
+        models.topic.hasOne(models.topic, {
+            foreignKey: 'parentTopicID',
+        })
         models.topic.hasMany(models.tutorial, {
             foreignKey: 'fk_topicID',
             onDelete: 'cascade',
