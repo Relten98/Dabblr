@@ -3,6 +3,9 @@ const exphbs = require('express-handlebars');
 const puppeteer = require('puppeteer');
 const Article = require('./components/Article');
 
+// Load models folder
+const db = require('./models')
+
 
 const PORT = process.env.PORT || 8080;
 
@@ -14,8 +17,9 @@ app.set('view engine', 'handlebars');
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }))
-  .use(express.json())
-  .use(express.static(__dirname + '/public/styles'));
+app.use(express.json())
+// Static directory
+app.use(express.static('public'))
 
 app.get('/', async (req, res) => {
   const browser = await puppeteer.launch();
@@ -33,6 +37,9 @@ app.get('/', async (req, res) => {
   });
 })
 
-app.listen(PORT, () =>
-  console.log(`Server listening on: http://localhost:${PORT}`)
-);
+// Starts the server to begin listening
+db.sequelize
+    .sync()
+    .then(() =>
+        app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
+    )
