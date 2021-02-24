@@ -22,13 +22,6 @@ module.exports = (sequelize, DataTypes) => {
                 isURL: true,
             },
         },
-        submittedBy: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1],
-            },
-        },
     })
     Tutorial.associate = (models) => {
         models.tutorial.belongsTo(models.topic, {
