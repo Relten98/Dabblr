@@ -15,13 +15,6 @@ module.exports = (sequelize, DataTypes) => {
                 isIn: [[1, -1]],
             },
         },
-        userID: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1],
-            },
-        },
     })
     Vote.associate = (models) => {
         models.vote.belongsTo(models.tutorial, {
