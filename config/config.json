@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "222rangerGreen",
+    "password": "password123",
     "database": "dablr_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
