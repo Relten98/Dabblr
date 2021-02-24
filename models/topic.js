@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         models.topic.hasOne(models.topic, {
             foreignKey: 'parentTopicID',
         })
+        models.topic.belongsTo(models.topic, {
+            foreignKey: 'parentTopicID',
+        })
         models.topic.hasMany(models.tutorial, {
             foreignKey: 'fk_topicID',
             onDelete: 'cascade',
