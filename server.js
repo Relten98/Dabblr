@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const puppeteer = require('puppeteer');
 const Article = require('./components/Article');
 
 
@@ -14,13 +15,21 @@ app.set('view engine', 'handlebars');
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }))
   .use(express.json())
-  // .use(express.static(__dirname + '/public'));
+  .use(express.static(__dirname + '/public/styles'));
 
 app.get('/', async (req, res) => {
-  let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32);
-  let summary = await wiki.getSummary(true)
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
+  let [header, summary] = await wiki.getInfo(true);
+
+  
   res.render('index', {
-    summary: summary
+    href: wiki.href,
+    header: header,
+    score: wiki.score,
+    summary: summary, 
+    source: wiki.getSource()
   });
 })
 

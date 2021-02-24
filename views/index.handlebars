@@ -1,8 +1,103 @@
 <div class="container">
-    <div class="row mt-3">
-        <p>{{summary}}</p>
+        <div class="row">
+            <h1 class="mt-3 text-center">{{header}}</h1>
+        </div>
+        <div class="flex-row d-flex mt-5 justify-content-between">
+            <div class="d-flex flex-column col-6 me-3 all-articles">
+                <div class="d-flex flex-row justify-content-between">
+                    <h3>Score: {{score}}</h3>
+                        <div class="voting">
+                            <button type="button" class="btn btn-success">Upvote</button>
+                            <button type="button" class="btn btn-danger">Downvote</button>
+                        </div>
+                </div>
+
+                <p id="summary">
+                    {{summary}}
+                </p>
+
+                <div class="flex-row" id="vote+source">
+                    <a href={{href}} target="_blank" id="source"><button type="button"
+                            class="btn btn-primary">Source: {{source}}</button></a>
+                </div>
+                <h3>Alternative articles.</h3>
+                <div class="alt-articles mt-1">
+                    <div class="alt-article">
+                        <div class="d-flex flex-row">
+                            <a href="https://www.dolitashoes.com/blogs/news/the-history-and-evolution-of-shoes"
+                                target="_blank" id="alt-source">
+                                <h5>THE HISTORY AND EVOLUTION OF FOOTWEAR</h5>
+                            </a>
+                        </div>
+                        <p class="alt-summary">
+                            It’s hard to imagine what life was like when shoes weren’t discovered yet. Everything
+                            started because of a real and practical need to protect the feet from outside effects. This
+                            seemingly simple human need turned into a quickly growing industry in which design was just
+                            as important as functionality.
+                        </p>
+                        <div class="d-flex flex-row justify-content-between">
+                            <h3>Score: 17</h3>
+                            <div class="voting">
+                                <button type="button" class="btn btn-success">Upvote</button>
+                                <button type="button" class="btn btn-danger">Downvote</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alt-article">
+                        <div class="d-flex flex-row">
+                            <a href="https://allthatsinteresting.com/fascinating-history-footwear" target="_blank"
+                                id="alt-source">
+                                <h5>The Fascinating History of Footwear</h5>
+                            </a>
+                        </div>
+                        <p class="alt-summary">
+                            It’s hard to imagine a time before the invention of shoes. Yet what started as a practical
+                            venture has grown into a varied, booming industry just as concerned with art as it is with
+                            functionality. Though all shoes share basic characteristics, their coloring, materials, and
+                            designs have transformed drastically over thousands of years in the fascinating history of
+                            footwear.
+                        </p>
+                        <div class="d-flex flex-row justify-content-between">
+                            <h3>Score: -100</h3>
+                            <div class="voting">
+                                <button type="button" class="btn btn-success">Upvote</button>
+                                <button type="button" class="btn btn-danger">Downvote</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="input-group mt-1">
+                    <input type="text" class="form-control" placeholder="Add article url" aria-label="submit-article"
+                        aria-describedby="submit-article" id="input-article">
+                    <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
+                </div>
+            </div>
+            <div class="col-6 ms-3">
+                <div class="d-flex flex-column col-6 me-3">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" placeholder="Add video url" aria-label="submit-article"
+                            aria-describedby="submit-article" id="input-article">
+                        <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row mt-3 mb-5">
+            <div class="col-12 d-flex justify-content-around">
+                <button type="button" class="btn btn-primary">Child subject</button>
+                <button type="button" class="btn btn-primary">Child subject</button>
+                <button type="button" class="btn btn-primary">Child subject</button>
+            </div>
+
+        </div>
     </div>
-</div>
 
 
 
@@ -11,4 +106,3 @@
     crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="./main.js"></script>
