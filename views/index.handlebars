@@ -1,11 +1,11 @@
 <div class="container">
         <div class="row">
-            <h1 class="mt-3 text-center">{{header}}</h1>
+            <h1 class="mt-3 text-center">{{main.header}}</h1>
         </div>
         <div class="flex-row d-flex mt-5 justify-content-between">
             <div class="d-flex flex-column col-6 me-3 all-articles">
                 <div class="d-flex flex-row justify-content-between">
-                    <h3>Score: {{score}}</h3>
+                    <h3>Score: {{main.score}}</h3>
                         <div class="voting">
                             <button type="button" class="btn btn-success">Upvote</button>
                             <button type="button" class="btn btn-danger">Downvote</button>
@@ -13,62 +13,36 @@
                 </div>
 
                 <p id="summary">
-                    {{summary}}
+                    {{main.summary}}
                 </p>
 
                 <div class="flex-row" id="vote+source">
-                    <a href={{href}} target="_blank" id="source"><button type="button"
-                            class="btn btn-primary">Source: {{source}}</button></a>
+                    <a href={{main.href}} target="_blank" id="source"><button type="button"
+                            class="btn btn-primary">Source: {{main.source}}</button></a>
                 </div>
                 <h3>Alternative articles.</h3>
                 <div class="alt-articles mt-1">
+                {{#each alts}}
                     <div class="alt-article">
                         <div class="d-flex flex-row">
                             <a href="https://www.dolitashoes.com/blogs/news/the-history-and-evolution-of-shoes"
                                 target="_blank" id="alt-source">
-                                <h5>THE HISTORY AND EVOLUTION OF FOOTWEAR</h5>
+                                <h5>{{header}}</h5>
                             </a>
                         </div>
                         <p class="alt-summary">
-                            It’s hard to imagine what life was like when shoes weren’t discovered yet. Everything
-                            started because of a real and practical need to protect the feet from outside effects. This
-                            seemingly simple human need turned into a quickly growing industry in which design was just
-                            as important as functionality.
+                            {{summary}}
                         </p>
                         <div class="d-flex flex-row justify-content-between">
-                            <h3>Score: 17</h3>
+                            <h3>Score: {{score}}</h3>
                             <div class="voting">
                                 <button type="button" class="btn btn-success">Upvote</button>
                                 <button type="button" class="btn btn-danger">Downvote</button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="alt-article">
-                        <div class="d-flex flex-row">
-                            <a href="https://allthatsinteresting.com/fascinating-history-footwear" target="_blank"
-                                id="alt-source">
-                                <h5>The Fascinating History of Footwear</h5>
-                            </a>
-                        </div>
-                        <p class="alt-summary">
-                            It’s hard to imagine a time before the invention of shoes. Yet what started as a practical
-                            venture has grown into a varied, booming industry just as concerned with art as it is with
-                            functionality. Though all shoes share basic characteristics, their coloring, materials, and
-                            designs have transformed drastically over thousands of years in the fascinating history of
-                            footwear.
-                        </p>
-                        <div class="d-flex flex-row justify-content-between">
-                            <h3>Score: -100</h3>
-                            <div class="voting">
-                                <button type="button" class="btn btn-success">Upvote</button>
-                                <button type="button" class="btn btn-danger">Downvote</button>
-                            </div>
-                        </div>
-                    </div>
-
+                {{/each}}
                 </div>
-
 
                 <div class="input-group mt-1">
                     <input type="text" class="form-control" placeholder="Add article url" aria-label="submit-article"

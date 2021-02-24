@@ -19,25 +19,62 @@ app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 // Static directory
-app.use(express.static('public'))
+app.use(express.static('public/styles'))
+
+let testDB = [
+  {
+    href: "https://en.wikipedia.org/wiki/Footwear",
+    score: 32,
+  },
+  {
+    href: "https://www.dolitashoes.com/blogs/news/the-history-and-evolution-of-shoes",
+    score: 17,
+  },
+  {
+    href: "https://allthatsinteresting.com/fascinating-history-footwear",
+    score: -100,
+  }
+];
 
 app.get('/', async (req, res) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
-  let [header, summary] = await wiki.getInfo(true);
 
-  
+  let main;
+  let altArticles = [];
+  for (let i = 0; i < testDB.length; i++) {
+    let article = new Article(testDB[i].href, testDB[i].source, browser, page);
+    let [header, summary] = ["", ""];
+    let source = article.getSource();
+    if (i === 0) {
+      [header, summary] = await article.getInfo(true);
+      main = {
+        header: header,
+        summary: summary,
+        score: testDB[i].score,
+        href: testDB[i].href,
+        source: source
+      };
+    }
+    else {
+      [header, summary] = await article.getInfo(false);
+      altArticles.push({
+        header: header,
+        summary: summary,
+        score: db[i].score,
+        href: db[i].href,
+        source: source
+      });
+    }
+  }
+
   res.render('index', {
-    href: wiki.href,
-    header: header,
-    score: wiki.score,
-    summary: summary, 
-    source: wiki.getSource()
+    main: main,
+    alts: altArticles
   });
 })
 
-// Starts the server to begin listening
+//Starts the server to begin listening
 db.sequelize
     .sync()
     .then(() =>
