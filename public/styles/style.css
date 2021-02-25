@@ -1,7 +1,71 @@
-.alt-articles {
-    border: 1px solid black;
+body {
+    box-sizing: border-box;
+    background-color: #ECECEC;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+
+.main-article {
+    background-color: #F8F8F8;
+    border-radius: 15px;
+    font-size: large;
+}
+
+#score {
+    font-weight: 700;
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 .alt-article {
-    border: 1px solid black;
+    background-color: #F8F8F8;
+    border-radius: 15px;
 }
+
+.alt-header {
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    /* font-weight: 700; */
+    color: #506fd4;
+    border: 2px solid #506fd4;
+    transition: .3s background-color, .3s color;
+}
+
+.alt-header:hover {
+    background-color: #506fd4;
+    color: white;
+}
+
+button {
+    font-size: medium;
+    background-color: inherit;
+    color: #506fd4;
+    font-weight: 700;
+    border: 3px solid #506fd4;
+    border-radius: 30px;
+    padding: 10px;
+    transition: .3s background-color, .3s color;
+}
+
+.voting-btn {
+    padding: 0px 10px;
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+.alt-voting-btn {
+    padding: 0px 10px;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #506fd4;
+    color: white;
+}
+
