@@ -1,7 +1,7 @@
   <h1 align="center">Dabblr</h1>
   <br />
   
-  Made by Ankush, C.T, Syrus, Ty
+  Made by Team STONKS
 
   ## Description / Features
 
@@ -20,7 +20,8 @@
   Users are (hopefully) expected to follow this lisense guidelines, or else they shalt be smitten with the wrath of my dissapointment.
 
   ## Contributors
-   undefined
+  TEAM STONKS
+Ankush, C.T, Syrus, Ty
   
   ## Tests
   undefined
