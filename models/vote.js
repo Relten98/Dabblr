@@ -1,12 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     let Vote = sequelize.define('vote', {
-        voteTutorial: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                len: [1],
-            },
-        },
         voteType: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -15,16 +8,18 @@ module.exports = (sequelize, DataTypes) => {
                 isIn: [[1, -1]],
             },
         },
-    })
+    });
+    // Vote.getVotes = (tutorialID) => Votes.findOne({ where: { id: topicID } });
+
     Vote.associate = (models) => {
-        models.vote.belongsTo(models.tutorial, {
+        Vote.belongsTo(models.tutorial, {
             foreignKey: 'fk_tutorialID',
             onDelete: 'CASCADE',
-        })
-        models.vote.belongsTo(models.user, {
+        });
+        Vote.belongsTo(models.user, {
             foreignKey: 'fk_userID',
             onDelete: 'CASCADE',
-        })
-    }
-    return Vote
-}
+        });
+    };
+    return Vote;
+};
