@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
     })
+    Topic.getTopic = (topicID) => Topic.findOne({ where: { id: topicID } })
 
     Topic.associate = (models) => {
         models.topic.hasOne(models.topic, {
