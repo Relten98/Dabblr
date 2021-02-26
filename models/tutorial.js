@@ -22,18 +22,21 @@ module.exports = (sequelize, DataTypes) => {
                 isURL: true,
             },
         },
-    })
+    });
+    Tutorial.getTutorials = (tutorialID) =>
+        Tutorial.findAll({ where: { fk_topicID: tutorialID } });
+
     Tutorial.associate = (models) => {
         models.tutorial.belongsTo(models.topic, {
             foreignKey: 'fk_topicID',
             onDelete: 'CASCADE',
-        })
+        });
         models.tutorial.hasMany(models.vote, {
             foreignKey: 'fk_tutorialID',
-        })
+        });
         models.tutorial.belongsTo(models.user, {
             foreignKey: 'fk_userID',
-        })
-    }
-    return Tutorial
-}
+        });
+    };
+    return Tutorial;
+};

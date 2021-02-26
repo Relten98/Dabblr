@@ -9,14 +9,14 @@ module.exports = (app) => {
         const topicID = req.params.topic;
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
-        console.log('req.params.topic ', req.params.topic);
+        // console.log('req.params.topic ', req.params.topic);
         // Mamamia papapia, we ain't gettin no wiki-ria
         // let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
         // let [header, summary] = await wiki.getInfo(true);
 
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
-        const getTutorials = 'tutorial db call goes here';
+        const getTutorials = db.tutorial.getTutorials(topicID);
         const getVotes = 'vote db call goes here';
         const getChildren = 'children topic db call goes here';
         const getParent = 'parent topic db call goes here';
@@ -29,7 +29,7 @@ module.exports = (app) => {
             getParent,
         ]).then((dbData) => {
             const [topic, tutorials, votes, children, parent] = dbData;
-
+            console.log('tutorials ', tutorials);
             // console.log('topicName ', topicName)
             const hbData = {
                 // href: wiki.href,
