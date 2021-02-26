@@ -19,6 +19,21 @@ let testDB = [
     }
 ];
 
+let topicChildren = [
+    {
+        topicID: 1,
+        name: "child topic 1"
+    },
+    {
+        topicID: 2,
+        name: "child topic 2"
+    },
+    {
+        topicID: 3, 
+        name: "child topic 3"
+    }
+]
+
 module.exports = (app) => {
     app.get('/', async (req, res) => {
         const browser = await puppeteer.launch();
@@ -54,7 +69,8 @@ module.exports = (app) => {
 
         res.render('index', {
             main: main,
-            alts: altArticles
+            alts: altArticles,
+            topicChildren: topicChildren
         });
     });
 

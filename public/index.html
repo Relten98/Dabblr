@@ -18,8 +18,10 @@
 
 <body>
     <div class="container">
-
-        <div class="flex-row d-flex mt-5 justify-content-between">
+        <div class="row">
+            <h1 class="mt-3 text-center header">Footwear</h1>
+        </div>
+        <div class="flex-row d-flex mt-3 justify-content-between">
             <div class="d-flex flex-column col-6 me-3 all-articles">
                 <div class="row main-article p-4">
                     <div class="d-flex flex-row justify-content-between">
@@ -45,6 +47,15 @@
                                 type="button" id="source-btn">Source: en.wikipedia.org</button></a>
                     </div>
 
+                </div>  
+
+                <div class="row">
+                    <h5 class="mt-3 px-0">Don't like these articles? Add a new one here:</h3>
+                    <div class="input-group px-0">
+                        <input type="text" class="form-control" placeholder="Add article url" aria-label="submit-article"
+                            aria-describedby="submit-article" id="input-article">
+                        <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
+                    </div>
                 </div>
 
                 <div class="alt-articles">
@@ -108,12 +119,7 @@
 
                 </div>
 
-
-                <!-- <div class="input-group mt-1">
-                    <input type="text" class="form-control" placeholder="Add article url" aria-label="submit-article"
-                        aria-describedby="submit-article" id="input-article">
-                    <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
-                </div> -->
+                
             </div>
             <!-- <div class="col-6 ms-3">
                 <div class="d-flex flex-column col-6 me-3">
@@ -128,14 +134,15 @@
                 </div>
             </div> -->
         </div>
-        <!-- <div class="flex-row mt-3 mb-5">
-            <div class="col-12 d-flex justify-content-around">
-                <button type="button" class="btn btn-primary">Child subject</button>
-                <button type="button" class="btn btn-primary">Child subject</button>
-                <button type="button" class="btn btn-primary">Child subject</button>
+        <div class="flex-row mt-3 mb-5">
+            <div class="col-12 d-flex justify-content-around children">
+                <button type="button" class="btn btn-primary child">Child subject</button>
+                <button type="button" class="btn btn-primary child">Child subject</button>
+                <button type="button" class="btn btn-primary child">Child subject</button>
+                
             </div>
 
-        </div> -->
+        </div>
     </div>
 
 
