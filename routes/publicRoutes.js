@@ -7,6 +7,7 @@ const db = require('../models');
 module.exports = (app) => {
     app.get('/topics/:topic', async (req, res) => {
         const topicID = req.params.topic;
+        const parentTopicID = req.params.topic;
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         console.log('req.params.topic ', req.params.topic);
@@ -30,14 +31,16 @@ module.exports = (app) => {
         ]).then((dbData) => {
             const [topic, tutorials, votes, children, parent] = dbData;
 
+            // GOD I HOPE THIS WORKS.
             const hbData = {
-                // href: wiki.href,
-                parent: parent.parentTopicID,
+                // href: wiki.href, 
+                parent: topic.parent.parentTopicID,
                 header: topic.topicName,
                 score: '+9001',
                 // score: wiki.score,
                 summary: 'the cake is a lie',
                 // source: wiki.getSource()
+                child: topic.children.childTopicID,
             };
             // The information below will feed into the handlebar renderer
 
