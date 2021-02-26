@@ -50,9 +50,37 @@ class Article {
         await this.page.goto(this.href);
         return Promise.all([this.getHeader(), this.getSummary(long)]);
     }
+
+    toHandleBars(long) {
+        return new Promise(async resolve => {
+            let hbObject = {
+                header: "",
+                summary: "",
+                score: this.score,
+                href: this.href,
+                source: this.getSource()
+            };
+            [hbObject.header, hbObject.summary] = await this.getInfo(long);
+            resolve(hbObject);
+        });
+    }
 }
 
 async function main() {
+    let testDB = [
+        {
+            href: "https://en.wikipedia.org/wiki/Footwear",
+            score: 32,
+        },
+        {
+            href: "https://www.dolitashoes.com/blogs/news/the-history-and-evolution-of-shoes",
+            score: 17,
+        },
+        {
+            href: "https://allthatsinteresting.com/fascinating-history-footwear",
+            score: -100,
+        }
+    ];
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);

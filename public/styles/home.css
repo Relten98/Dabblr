@@ -1,0 +1,23 @@
+body {
+    box-sizing: border-box;
+    color: white;
+    background-color: #506fd4;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} 
+                     
+.header {
+    position: relative;
+    top: -15vh;
+}

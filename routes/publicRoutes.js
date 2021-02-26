@@ -32,7 +32,7 @@ let topicChildren = [
         topicID: 3, 
         name: "child topic 3"
     }
-]
+];
 
 module.exports = (app) => {
     app.get('/', async (req, res) => {
@@ -42,28 +42,14 @@ module.exports = (app) => {
         let main;
         let altArticles = [];
         for (let i = 0; i < testDB.length; i++) {
-            let article = new Article(testDB[i].href, testDB[i].source, browser, page);
+            let article = new Article(testDB[i].href, testDB[i].score, browser, page);
             let [header, summary] = ["", ""];
             let source = article.getSource();
             if (i === 0) {
-                [header, summary] = await article.getInfo(true);
-                main = {
-                    header: header,
-                    summary: summary,
-                    score: testDB[i].score,
-                    href: testDB[i].href,
-                    source: source
-                };
+                main = await article.toHandleBars(true);
             }
             else {
-                [header, summary] = await article.getInfo(false);
-                altArticles.push({
-                    header: header,
-                    summary: summary,
-                    score: testDB[i].score,
-                    href: testDB[i].href,
-                    source: source
-                });
+                altArticles.push(await article.toHandleBars(false))
             }
         }
 
