@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
     })
-    Topic.getTopic = (topicID) => Topic.findOne({ where: { id: topicID } })
+    Topic.getTopic = (topicID) => Topic.findOne({ where: { id: topicID } });
+// Our handy call for the parent... I think
+    Topic.getParent = (parentTopicID) => Topic.findOne({ where: { id: parentTopicID } })
 
     Topic.associate = (models) => {
         models.topic.hasOne(models.topic, {

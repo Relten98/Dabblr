@@ -18,8 +18,8 @@ module.exports = (app) => {
         const getTopic = db.topic.getTopic(topicID);
         const getTutorials = 'tutorial db call goes here';
         const getVotes = 'vote db call goes here';
-        const getChildren = 'children topic db call goes here';
-        const getParent = db.topic.getTopic(parentTopicID);
+        const getChildren = db.topic.getChildren(childTopicID);
+        const getParent = db.topic.getParent(parentTopicID);
 
         Promise.all([
             getTopic,
@@ -32,7 +32,7 @@ module.exports = (app) => {
 
             const hbData = {
                 // href: wiki.href,
-                parent: topic.parentTopicID,
+                parent: parent.parentTopicID,
                 header: topic.topicName,
                 score: '+9001',
                 // score: wiki.score,
