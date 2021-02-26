@@ -19,7 +19,7 @@ module.exports = (app) => {
         const getTutorials = 'tutorial db call goes here';
         const getVotes = 'vote db call goes here';
         const getChildren = 'children topic db call goes here';
-        const getParent = 'parent topic db call goes here';
+        const getParent = db.topic.getTopic(parentTopicID);
 
         Promise.all([
             getTopic,
@@ -30,17 +30,20 @@ module.exports = (app) => {
         ]).then((dbData) => {
             const [topic, tutorials, votes, children, parent] = dbData;
 
-            // console.log('topicName ', topicName)
             const hbData = {
                 // href: wiki.href,
+                parent: topic.parentTopicID,
                 header: topic.topicName,
                 score: '+9001',
                 // score: wiki.score,
                 summary: 'the cake is a lie',
                 // source: wiki.getSource()
             };
-            // The information belowe will feed into the handlebar renderer
-            // Handlebar renderer
+            // The information below will feed into the handlebar renderer
+
+            // Me: A "civilized" human being.
+
+            // Handlebar renderer:
             res.render('index', hbData);
         });
     });
