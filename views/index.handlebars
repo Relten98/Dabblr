@@ -1,82 +1,66 @@
 <div class="container">
     <div class="row">
-        <h1 class="mt-3 text-center">{{header}}</h1>
+        <h1 class="mt-3 text-center header">{{main.header}}</h1>
     </div>
-    <div class="flex-row d-flex mt-5 justify-content-between">
+    <div class="flex-row d-flex mt-3 justify-content-between">
         <div class="d-flex flex-column col-6 me-3 all-articles">
-            <div class="d-flex flex-row justify-content-between">
-                <h3>Score: {{score}}</h3>
-                <div class="voting">
-                    <button type="button" class="btn btn-success">Upvote</button>
-                    <button type="button" class="btn btn-danger">Downvote</button>
-                </div>
-            </div>
-
-            <p id="summary">
-                {{summary}}
-            </p>
-
-            <div class="flex-row" id="vote+source">
-                <a href={{href}} target="_blank" id="source"><button type="button" class="btn btn-primary">Source:
-                        {{source}}</button></a>
-            </div>
-            <h3>Alternative articles.</h3>
-            <div class="alt-articles mt-1">
-                <div class="alt-article">
-                    <div class="d-flex flex-row">
-                        <a href="https://www.dolitashoes.com/blogs/news/the-history-and-evolution-of-shoes"
-                            target="_blank" id="alt-source">
-                            <h5>THE HISTORY AND EVOLUTION OF FOOTWEAR</h5>
-                        </a>
-                    </div>
-                    <p class="alt-summary">
-                        It’s hard to imagine what life was like when shoes weren’t discovered yet. Everything
-                        started because of a real and practical need to protect the feet from outside effects. This
-                        seemingly simple human need turned into a quickly growing industry in which design was just
-                        as important as functionality.
-                    </p>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3>Score: 17</h3>
-                        <div class="voting">
-                            <button type="button" class="btn btn-success">Upvote</button>
-                            <button type="button" class="btn btn-danger">Downvote</button>
-                        </div>
+            <div class="row main-article p-4">
+                <div class="d-flex flex-row justify-content-between">
+                    <h3 id="score">Score: {{main.score}}</h3>
+                    <div class="voting">
+                        <button class="voting-btn"><i class="far fa-thumbs-up"></i></button>
+                        <button class="voting-btn"><i class="far fa-thumbs-down"></i></button>
                     </div>
                 </div>
 
-                <div class="alt-article">
-                    <div class="d-flex flex-row">
-                        <a href="https://allthatsinteresting.com/fascinating-history-footwear" target="_blank"
-                            id="alt-source">
-                            <h5>The Fascinating History of Footwear</h5>
-                        </a>
-                    </div>
-                    <p class="alt-summary">
-                        It’s hard to imagine a time before the invention of shoes. Yet what started as a practical
-                        venture has grown into a varied, booming industry just as concerned with art as it is with
-                        functionality. Though all shoes share basic characteristics, their coloring, materials, and
-                        designs have transformed drastically over thousands of years in the fascinating history of
-                        footwear.
-                    </p>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3>Score: -100</h3>
-                        <div class="voting">
-                            <button type="button" class="btn btn-success">Upvote</button>
-                            <button type="button" class="btn btn-danger">Downvote</button>
-                        </div>
-                    </div>
-                </div>
+                <p id="summary">
+                    {{main.summary}}
+                </p>
 
+                <div class="row">
+                        <a href={{main.href}} target="_blank" id="source"><button
+                                type="button" id="source-btn">Source: {{main.source}}</button></a>
+                    </div>
             </div>
 
+            <div class="row">
+                <h5 class="mt-3 px-0">Don't like these articles? Add a new one here:</h3>
+                    <div class="input-group px-0">
+                        <input type="text" class="form-control" placeholder="Add article url"
+                            aria-label="submit-article" aria-describedby="submit-article" id="input-article">
+                        <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
+                    </div>
+            </div>
 
-            <div class="input-group mt-1">
-                <input type="text" class="form-control" placeholder="Add article url" aria-label="submit-article"
-                    aria-describedby="submit-article" id="input-article">
-                <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
+            <div class="alt-articles">
+                {{#each alts}}
+                <div class="row">
+
+                    <div class="alt-article mt-3 px-0">
+                        <h5 class="alt-header px-3 py-2">{{header}}</h5>
+
+                            <p class="alt-summary px-3">
+                                {{summary}}
+                            </p>
+                            <div class="d-flex flex-row justify-content-between px-3">
+                                <h4>Score: {{score}}</h4>
+                                <div class="voting">
+                                    <button class="alt-voting-btn"><i class="far fa-thumbs-up"></i></button>
+                                    <button class="alt-voting-btn"><i class="far fa-thumbs-down"></i></button>
+                                </div>
+                            </div>
+                            <div class="row px-3 pb-2">
+                                <a href={{href}}
+                                    target="_blank"><button type="button" class="alt-source-btn">Source:
+                                        {{source}}</button></a>
+                            </div>
+                    </div>
+                </div>
+                {{/each}}
+
             </div>
         </div>
-        <div class="col-6 ms-3">
+        {{!-- <div class="all-videos col-6 ms-3">
             <div class="d-flex flex-column col-6 me-3">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -87,13 +71,13 @@
                     <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <div class="flex-row mt-3 mb-5">
-        <div class="col-12 d-flex justify-content-around">
-            <button type="button" class="btn btn-primary">Child subject</button>
-            <button type="button" class="btn btn-primary">Child subject</button>
-            <button type="button" class="btn btn-primary child-topics" data-TopicID="1">Child Topic 1</button>
+        <div class="col-12 d-flex justify-content-around children">
+            {{#each topicChildren}}
+            <button type="button" class="btn btn-primary child" data-TopicID={{topicID}}>{{name}}</button>
+            {{/each}}
         </div>
 
     </div>

@@ -7,6 +7,12 @@ body {
     padding: 0;
 }
 
+.header {
+    color: white;
+    background-color: #506fd4;
+    padding: 10px;
+    border-radius: 15px;
+}
 
 .main-article {
     background-color: #F8F8F8;
@@ -36,7 +42,7 @@ a, a:hover {
     color: white;
 }
 
-button {
+#submit-article, .child, button {
     font-size: medium;
     background-color: inherit;
     color: #506fd4;
@@ -45,6 +51,10 @@ button {
     border-radius: 15px;
     padding: 3px 10px;
     transition: .3s background-color, .3s color;
+}
+
+#submit-article {
+    border-radius: 5px;
 }
 
 .voting-btn {
@@ -58,7 +68,15 @@ button {
     border-radius: 10px;
 }
 
-button:hover {
+#submit-article:hover, button:hover {
     background-color: #506fd4;
     color: white;
 }
+
+.children {
+    padding: 10px 0;
+    border: 3px solid #506fd4;
+    border-radius: 15px;
+
+}
+

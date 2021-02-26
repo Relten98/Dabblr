@@ -10,10 +10,6 @@ const db = require('./models');
 const PORT = process.env.PORT || 8080;
 
 let app = express();
-
-// Routes
-require(`./routes/publicRoutes.js`)(app);
-
 // Set Handlebars as the default templating engine.
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -22,6 +18,7 @@ app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Static directory
+<<<<<<< HEAD
 app.use(express.static('public'));
 
 // Starts the server to begin listening
@@ -32,3 +29,20 @@ db.sequelize
             console.log(`${birds} ducks are listening in on PORT ${PORT}`)
         )
     );
+=======
+app.use(express.static('public/styles'))
+
+// Routes
+require(`./routes/publicRoutes.js`)(app);
+
+//Starts the server to begin listening
+// db.sequelize
+//   .sync()
+//   .then(() =>
+//     app.listen(PORT, () => console.log(`${birds} ducks are listening in on PORT ${PORT}`))
+//   )
+
+app.listen(PORT, () => {
+  console.log(`${birds} DUCKS ARE LISTENING IN ON PORT ${PORT}`);
+})
+>>>>>>> 2812f02959fc8a08ae4fbb6059ae9ef701bb4b88

@@ -1,5 +1,5 @@
 // Object that represents an article. 
-const Puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer");
 
 // Each article gets its own page. All articles (will likely) share a browser for parallel programming purposes.
 class Article {
@@ -33,9 +33,8 @@ class Article {
             let paragraph = await this.page.evaluate(el => el.textContent, paragraphElem)
             // since .slice returns a shallow copy.
             const sentences = paragraph.split(".");
-            let total;
+            let total = sentences.length <= 6 ? sentences.length : 6;
             let summary = "";
-            sentences.length <= 6 ? total = sentences.length : total = 6;
             if (long) {
                 for (let i = 0; i < total; i++) summary += sentences[i] + ".";
                 resolve(summary)
@@ -54,12 +53,15 @@ class Article {
 }
 
 async function main() {
-    const browser = await Puppeteer.launch();
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
-    wiki.getSource();
+    let [header, summary] = await wiki.getInfo(true);
+    console.log("summary:", summary);
     browser.close();
 }
+
+// main();
 
 module.exports = Article;
 
