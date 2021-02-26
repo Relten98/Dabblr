@@ -50,18 +50,18 @@ module.exports = (app) => {
             getParent,
         ]).then((dbData) => {
             const [topic, tutorials, children, parent] = dbData;
-            console.log('dbData', dbData);
+            // console.log('dbData', dbData);
 
             // refactor tutorials into videos and articles
             const videos = [];
             const articles = [];
-            // tutorials.forEach((element) => {
-            //     if (element.tutorialType === 'video') {
-            //         videos.push(element);
-            //     } else {
-            //         articles.push(element);
-            //     }
-            // });
+            tutorials.forEach((element) => {
+                if (element.tutorialType === 'video') {
+                    videos.push(element);
+                } else {
+                    articles.push(element);
+                }
+            });
             // console.log('videos', videos);
             // console.log('articles', articles);
             const hbData = {
@@ -69,10 +69,6 @@ module.exports = (app) => {
                 header: topic.topicName,
                 videos,
                 articles,
-                score: '+9001',
-                // tutorials: t
-                // score: wiki.score,
-                summary: 'the cake is a lie',
                 // source: wiki.getSource()
             };
             // The information belowe will feed into the handlebar renderer
