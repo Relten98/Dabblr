@@ -1,4 +1,5 @@
 // Import our requirements
+const sequelize = require('sequelize');
 const puppeteer = require('puppeteer');
 const db = require('../models');
 
@@ -16,25 +17,60 @@ module.exports = (app) => {
 
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
-        const getTutorials = db.tutorial.getTutorials(topicID);
-        const getVotes = 'vote db call goes here';
+        // Note getTutorialsAndVotes is not a model method because it uses an "include" and we couldn't get that woking in a model folder.
+        const getTutorialsAndVotes = new Promise((resolve, reject) => {
+            const tutData = db.tutorial.findAll({
+                where: { fk_topicID: topicID },
+                attributes: {
+                    include: [
+                        [
+                            sequelize.literal(`
+                    (SELECT SUM(voteType)
+                    FROM votes AS votes
+                    WHERE votes.fk_tutorialID = tutorial.id
+                    )`),
+                            'votesSum',
+                        ],
+                    ],
+                },
+                order: [[sequelize.literal('votesSum'), 'DESC']],
+                raw: true,
+            });
+
+            resolve(tutData);
+        });
+
         const getChildren = 'children topic db call goes here';
         const getParent = 'parent topic db call goes here';
 
         Promise.all([
             getTopic,
-            getTutorials,
-            getVotes,
+            getTutorialsAndVotes,
             getChildren,
             getParent,
         ]).then((dbData) => {
-            const [topic, tutorials, votes, children, parent] = dbData;
-            console.log('tutorials ', tutorials);
-            // console.log('topicName ', topicName)
+            const [topic, tutorials, children, parent] = dbData;
+            console.log('dbData', dbData);
+
+            // refactor tutorials into videos and articles
+            const videos = [];
+            const articles = [];
+            // tutorials.forEach((element) => {
+            //     if (element.tutorialType === 'video') {
+            //         videos.push(element);
+            //     } else {
+            //         articles.push(element);
+            //     }
+            // });
+            // console.log('videos', videos);
+            // console.log('articles', articles);
             const hbData = {
                 // href: wiki.href,
                 header: topic.topicName,
+                videos,
+                articles,
                 score: '+9001',
+                // tutorials: t
                 // score: wiki.score,
                 summary: 'the cake is a lie',
                 // source: wiki.getSource()

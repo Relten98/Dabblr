@@ -23,18 +23,16 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
     });
-    Tutorial.getTutorials = (tutorialID) =>
-        Tutorial.findAll({ where: { fk_topicID: tutorialID } });
 
     Tutorial.associate = (models) => {
-        models.tutorial.belongsTo(models.topic, {
+        Tutorial.belongsTo(models.topic, {
             foreignKey: 'fk_topicID',
             onDelete: 'CASCADE',
         });
-        models.tutorial.hasMany(models.vote, {
+        Tutorial.hasMany(models.vote, {
             foreignKey: 'fk_tutorialID',
         });
-        models.tutorial.belongsTo(models.user, {
+        Tutorial.belongsTo(models.user, {
             foreignKey: 'fk_userID',
         });
     };
