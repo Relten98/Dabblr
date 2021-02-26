@@ -23,8 +23,6 @@ async function scrape_youtube(browser, keywords) {
 
     const results = {};
 
-    // before we do anything, parse the results of the front page of youtube
-    // await page.waitForSelector('ytd-video-renderer,ytd-grid-video-renderer', { timeout: 10000 });
     await page.waitForSelector('ytd-rich-grid-renderer', { timeout: 10000 });
     let html = await page.content();
     results['__frontpage__'] = parse(html);
