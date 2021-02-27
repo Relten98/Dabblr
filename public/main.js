@@ -6,8 +6,13 @@ function init() {
     });
     $('.child-topics').click((event) => {
         const topicID = event.target.dataset.topicid;
-        window.location.href = `/topics/${topicID}`;
+        console.log("topic id:", topicID);
+       debugger;
+        window.location.href = `${topicID}`;
     });
 }
 
-$(document).ready(() => init());
+$(document).ready(() => {
+    init();
+    // displayContent();
+});

@@ -3,15 +3,12 @@ const sequelize = require('sequelize');
 const puppeteer = require('puppeteer');
 const db = require('../models');
 
+const Article = require('../components/Article');
+
 module.exports = (app) => {
     app.get('/topics/:topic', async (req, res) => {
         const topicID = req.params.topic;
-        const parentTopicID = req.params.topic;
-        const browser = await puppeteer.launch();
-
-        // We forgot what this did, what is this for?
-        const page = await browser.newPage();
-
+        const parentTopicID = 1;
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
         // Note getTutorialsAndVotes is, here, instead of being a model method because it uses an "include" and we couldn't get that woking in a model folder.
@@ -36,7 +33,8 @@ module.exports = (app) => {
 
             resolve(tutData);
         });
-        // Parent and child model methods
+        // Parent and child model methods.
+        // Each topic has parent and children.
         const getChild = db.topic.getChild(topicID);
         const getParent = db.topic.getParent(parentTopicID);
 
@@ -47,11 +45,12 @@ module.exports = (app) => {
                 getTutorialsAndVotes,
                 getChild,
                 getParent,
-            ]).then((dbData) => {
+
+            ]).then(async (dbData) => {
                 const [topic, tutorials, children, parent] = dbData;
                 if (!dbData[0]) {
-                    return res.status(400).send('Topic does not exist');
-                }
+                    return res.status(400).send('Topic does not exist')
+                };
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
@@ -62,16 +61,48 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
-                // Data to handlebars
+
                 const hbData = {
-                    parent,
+                    parent: topic.parentTopicID,
                     header: topic.topicName,
                     videos,
                     articles,
                     children,
                 };
+<<<<<<< HEAD
                 // Handlebar renderer
                 res.render('index', hbData);
+=======
+
+                // RIP Puppeteer
+                // const browser = await puppeteer.launch();
+                // const page = await browser.newPage();
+
+                // let mainArticle;
+                // let altArticles = [];
+                // for (let i = 0; i < articles.length; i++) {
+                //     // Create an Article object from data recieved from db. Article object is used for Puppeteer work.
+                //     let article = new Article(articles[i].tutorialLink, articles[i].votesSum, browser, page);
+                //     if (i === 0) {
+                //         mainArticle = await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName,
+                //             articles[i].fk_topicID, articles[i].fk_userID, true);
+                //     }
+                //     else {
+                //         let altArticle = await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName,
+                //             articles[i].fk_topicID, articles[i].fk_userID, true);
+                //         altArticles.push(altArticle);
+                //     }
+                // }
+
+                res.render('index', {
+                    // mainArticle,
+                    // altArticles,
+
+                    // Parent will be used for parent button. Children will be used for children buttons.
+                    parent,
+                    children
+                });
+>>>>>>> 3f005ebaa8af206111b0d1400f47598518a42302
             });
         } catch (error) {
             res.status(500).send(
@@ -80,10 +111,11 @@ module.exports = (app) => {
         }
     });
 
+    // Home page information
     app.get('/', async (req, res) => {
         const hbData = {
             header: 'Home Page',
         };
-        res.render('index', hbData);
+        res.render('home', hbData);
     });
 };

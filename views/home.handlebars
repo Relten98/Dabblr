@@ -1,0 +1,12 @@
+<div class="container-landing">
+    <div class="row landing header-landing">
+        <h1 class="display-1 text-center">Welcome to Dabblr.</h1>
+        <h1 class="text-center">Choose a topic below:</h1>
+        <div class="flex-row mt-1 text-center topics">
+            {{#each topics}}
+            <a href='/topics/{{id}}'><button type="button" class="landing-btn my-1 mx-1"
+                    data-TopicID="1">{{name}}</button></a>
+            {{/each}}
+        </div>
+    </div>
+</div>
