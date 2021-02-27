@@ -7,6 +7,8 @@ const Article = require('../components/Article');
 
 module.exports = (app) => {
     app.get('/topics/:topic', async (req, res) => {
+        const topicID = req.params.topic;
+        const parentTopicID = 1;
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
         // Note getTutorialsAndVotes is, here, instead of being a model method because it uses an "include" and we couldn't get that woking in a model folder.
@@ -31,35 +33,25 @@ module.exports = (app) => {
 
             resolve(tutData);
         });
-        // Parent and child model methods
+        // Parent and child model methods.
+        // Each topic has parent and children.
         const getChild = db.topic.getChild(topicID);
         const getParent = db.topic.getParent(parentTopicID);
 
         // Makes all database calls
         try {
-        Promise.all([
-            getTopic,
-            getTutorialsAndVotes,
-            getChild,
-            getParent,
+            Promise.all([
+                getTopic,
+                getTutorialsAndVotes,
+                getChild,
+                getParent,
 
-        ]).then((dbData) => {
-            const [topic, tutorials, children, parent] = dbData;
-            if (!dbData[0]) {
-                return res.status(400).send('Topic does not exist')
-            };
-            // Refactor tutorials into videos and articles
-            const videos = [];
-            const articles = [];
-            tutorials.forEach((element) => {
-                if (element.tutorialType === 'video') {
-                    videos.push(element);
-                } else {
-                    articles.push(element);
-                }
-                console.log('dbData', dbData);
-
-                // refactor tutorials into videos and articles
+            ]).then(async (dbData) => {
+                const [topic, tutorials, children, parent] = dbData;
+                if (!dbData[0]) {
+                    return res.status(400).send('Topic does not exist')
+                };
+                // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
                 tutorials.forEach((element) => {
@@ -69,56 +61,47 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
-                // console.log('videos', videos);
-                // console.log('articles', articles);
+
                 const hbData = {
-                    // href: wiki.href,
+                    parent: topic.parentTopicID,
                     header: topic.topicName,
                     videos,
                     articles,
-                    // source: wiki.getSource()
+                    children,
                 };
-                // The information belowe will feed into the handlebar renderer
-                // Handlebar renderer
-                res.render('index', hbData);
-            });
-            // console.log('videos', videos);
-            console.log('articles', articles);
-            const hbData = {
-                parent: topic.parentTopicID,
-                header: topic.topicName,
-                videos,
-                articles,
-                children,
-            };
 
-            const browser = await puppeteer.launch();
-            const page = await browser.newPage();
+                const browser = await puppeteer.launch();
+                const page = await browser.newPage();
 
-            let mainArticle;
-            let altArticles = [];
-            for (let i = 0; i < articles.length; i++) {
-                // Create an Article object from data recieved from db. Article object is used for Puppeteer work.
-                let article = new Article(articles[i].tutorialLink, articles[i].votesSum, browser, page);
-                if (i === 0) {
-                    mainArticle = await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName, articles[i].fk_topicID, fk.userID, true);
+                let mainArticle;
+                let altArticles = [];
+                for (let i = 0; i < articles.length; i++) {
+                    // Create an Article object from data recieved from db. Article object is used for Puppeteer work.
+                    let article = new Article(articles[i].tutorialLink, articles[i].votesSum, browser, page);
+                    if (i === 0) {
+                        mainArticle = await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName,
+                            articles[i].fk_topicID, articles[i].fk_userID, true);
+                    }
+                    else {
+                        let altArticle = await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName,
+                            articles[i].fk_topicID, articles[i].fk_userID, true);
+                        altArticles.push(altArticle);
+                    }
                 }
-                else {
-                    altArticles.push(await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName, articles[i].fk_topicID, fk.userID, true))
-                }
-            }
 
-            res.render('index', {
-                mainArticle,
-                altArticles,
-                topicChildren
+                res.render('index', {
+                    mainArticle,
+                    altArticles,
+                    // parent will be used for parent button. Children will be used for children buttons.
+                    parent,
+                    children
+                });
             });
-        });
-    } catch (error) {
-        res.status(500).send(
-            'There was a problem retrieving from the database'
-        );
-    }
+        } catch (error) {
+            res.status(500).send(
+                'There was a problem retrieving from the database'
+            );
+        }
     });
 
     // Home page.

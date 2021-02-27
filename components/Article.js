@@ -12,9 +12,9 @@ class Article {
 
     // (hopefully) gets just the website name, without the extra paths. Includes .com, .org, etc. 
     getSource() {
-        let re = '//([A-Za-z.]*)/';
-        const found = this.href.match(re)[1];
-        return found;
+        let website = this.href.split('/');
+        return website[2];
+
     }
 
     getHeader() {
@@ -22,15 +22,28 @@ class Article {
             // page.$ returns an ElementHandle - represents an in-page DOM element.
             let headerElem = await this.page.$('h1');
             // Grabs text content of first h1 on website.
-            let header = await this.page.evaluate(el => el.textContent, headerElem);
-            resolve(header);
+            let header;
+            try {
+                header = await this.page.evaluate(el => el.textContent, headerElem);
+                resolve(header);
+            } catch (error) {
+                resolve("No title available.")
+            }
+
         });
     }
 
     getSummary(long) {
         return new Promise(async resolve => {
             let paragraphElem = await this.page.$('p');
-            let paragraph = await this.page.evaluate(el => el.textContent, paragraphElem)
+            let paragraph;
+            try {
+                paragraph = await this.page.evaluate(el => el.textContent, paragraphElem);
+                resolve(paragraph)
+            } catch (error) {
+                resolve("No summary available.")
+            }
+
             // since .slice returns a shallow copy.
             const sentences = paragraph.split(".");
             let total = sentences.length <= 6 ? sentences.length : 6;
@@ -51,21 +64,25 @@ class Article {
         return Promise.all([this.getHeader(), this.getSummary(long)]);
     }
 
-    toHandleBars(tutorialType, tutorialName, topicID, userID, long) {
-        return new Promise(async resolve => {
+    toHandleBars(tutorialType, tutorialName, topicID, userID, parent, children, long) {
+        return new Promise(async (resolve, reject) => {
             let hbObject = {
                 header: "",
                 summary: "",
                 score: this.score,
                 href: this.href,
-                source: this.getSource(), 
+                source: this.getSource(),
                 tutorialType,
                 tutorialName,
                 topicID,
-                userID
+                // hard-coding this for now.
+                userID: 1
             };
             [hbObject.header, hbObject.summary] = await this.getInfo(long);
             resolve(hbObject);
+
+
+
         });
     }
 }
