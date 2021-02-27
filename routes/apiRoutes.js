@@ -15,13 +15,9 @@ module.exports = (app) => {
                     fk_topicID: req.body.topicID,
                     fk_userID: userID,
                 })
-                .then((results) => res.json(results));
+                .then(() => res.status(201));
         } catch (error) {
             res.status(500).send('There was a problem adding to the database');
         }
-
-        // } catch (error) {
-        //     console.log(error);
-        // }
     });
 };
