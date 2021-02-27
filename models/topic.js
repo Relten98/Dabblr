@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     }
     Topic.getParent = (parentTopicID) => Topic.findOne({ where: { id: parentTopicID } });
 
-    Topic.getChild = (childTopicID) => Topic.findOne({ where: { id: parentTopicID } });
+    Topic.getChild = (childTopicID) => Topic.findAll({ where: { id: parentTopicID } });
     
     return Topic
 }
+W
