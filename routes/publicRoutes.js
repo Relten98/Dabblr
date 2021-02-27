@@ -45,12 +45,11 @@ module.exports = (app) => {
                 getTutorialsAndVotes,
                 getChild,
                 getParent,
-
             ]).then(async (dbData) => {
                 const [topic, tutorials, children, parent] = dbData;
                 if (!dbData[0]) {
-                    return res.status(400).send('Topic does not exist')
-                };
+                    return res.status(400).send('Topic does not exist');
+                }
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
@@ -69,10 +68,6 @@ module.exports = (app) => {
                     articles,
                     children,
                 };
-<<<<<<< HEAD
-                // Handlebar renderer
-                res.render('index', hbData);
-=======
 
                 // RIP Puppeteer
                 // const browser = await puppeteer.launch();
@@ -100,9 +95,8 @@ module.exports = (app) => {
 
                     // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
-                    children
+                    children,
                 });
->>>>>>> 3f005ebaa8af206111b0d1400f47598518a42302
             });
         } catch (error) {
             res.status(500).send(
