@@ -1,7 +1,9 @@
 // Import our requirements
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 require('dotenv').config();
+
 const birds = 15000;
 
 // Load models folder
@@ -10,20 +12,23 @@ const db = require('./models');
 // Port information
 const PORT = process.env.PORT || 8080;
 
-let app = express();
+const app = express();
 
-// Routes
-require(`./routes/publicRoutes.js`)(app);
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.json());
 
 // Set Handlebars as the default templating engine.
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 // Static directory
 app.use(express.static('public'));
+
+// Routes
+require(`./routes/publicRoutes.js`)(app);
+require(`./routes/apiRoutes.js`)(app);
 
 // Starts the server to begin listening
 db.sequelize
