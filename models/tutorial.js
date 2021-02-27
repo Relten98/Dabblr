@@ -19,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
 
     Tutorial.associate = (models) => {
         Tutorial.belongsTo(models.topic, {
-            foreignKey: 'fk_topicID',
+            foreignKey: { name: 'fk_topicID', allowNull: false },
             onDelete: 'CASCADE',
         });
         Tutorial.hasMany(models.vote, {
-            foreignKey: 'fk_tutorialID',
+            foreignKey: { name: 'fk_tutorialID', allowNull: false },
         });
         Tutorial.belongsTo(models.user, {
-            foreignKey: 'fk_userID',
+            foreignKey: { name: 'fk_userID', allowNull: false },
         });
     };
     return Tutorial;

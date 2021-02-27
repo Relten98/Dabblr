@@ -20,14 +20,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-    })
+    });
     User.associate = (models) => {
         models.user.hasMany(models.tutorial, {
-            foreignKey: 'fk_userID',
-        })
+            foreignKey: { name: 'fk_userID', allowNull: false },
+        });
         models.user.hasMany(models.vote, {
-            foreignKey: 'fk_userID',
-        })
-    }
-    return User
-}
+            foreignKey: { name: 'fk_userID', allowNull: false },
+        });
+    };
+    return User;
+};

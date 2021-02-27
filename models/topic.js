@@ -14,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
 
     Topic.associate = (models) => {
         models.topic.hasOne(models.topic, {
-            foreignKey: 'parentTopicID',
+            foreignKey: { name: 'parentTopicID', allowNull: false },
         });
         models.topic.belongsTo(models.topic, {
-            foreignKey: 'parentTopicID',
+            foreignKey: { name: 'parentTopicID', allowNull: false },
         });
         models.topic.hasMany(models.tutorial, {
-            foreignKey: 'fk_topicID',
+            foreignKey: { name: 'fk_topicID', allowNull: false },
             onDelete: 'cascade',
         });
     };
