@@ -19,7 +19,7 @@ module.exports = (app) => {
         const getTopic = db.topic.getTopic(topicID);
         const getTutorials = 'tutorial db call goes here';
         const getVotes = 'vote db call goes here';
-        const getChildren = db.topic.getChildren(childTopicID);
+        const getChildren = 'vote db call goes here';
         const getParent = db.topic.getParent(parentTopicID);
 
         Promise.all([
@@ -34,13 +34,13 @@ module.exports = (app) => {
             // GOD I HOPE THIS WORKS.
             const hbData = {
                 // href: wiki.href, 
-                parent: topic.parent.parentTopicID,
+                parent: topic.parentTopicID,
                 header: topic.topicName,
                 score: '+9001',
                 // score: wiki.score,
                 summary: 'the cake is a lie',
                 // source: wiki.getSource()
-                child: topic.children.childTopicID,
+                child: topic.childTopicID,
             };
             // The information below will feed into the handlebar renderer
 
