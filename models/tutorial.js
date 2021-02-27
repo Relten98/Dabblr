@@ -1,12 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     const Tutorial = sequelize.define('tutorial', {
-        tutorialName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1],
-            },
-        },
         tutorialType: {
             type: DataTypes.STRING,
             allowNull: false,
