@@ -1,5 +1,5 @@
 // Object that represents an article. 
-const puppeteer = require("puppeteer");
+// const puppeteer = require("puppeteer");
 
 // Each article gets its own page. All articles (will likely) share a browser for parallel programming purposes.
 class Article {
@@ -51,50 +51,24 @@ class Article {
         return Promise.all([this.getHeader(), this.getSummary(long)]);
     }
 
-    toHandleBars(long) {
+    toHandleBars(tutorialType, tutorialName, topicID, userID, long) {
         return new Promise(async resolve => {
             let hbObject = {
                 header: "",
                 summary: "",
                 score: this.score,
                 href: this.href,
-                source: this.getSource()
+                source: this.getSource(), 
+                tutorialType,
+                tutorialName,
+                topicID,
+                userID
             };
             [hbObject.header, hbObject.summary] = await this.getInfo(long);
             resolve(hbObject);
         });
     }
 }
-
-async function main() {
-    let testDB = [
-        {
-            href: "https://en.wikipedia.org/wiki/Footwear",
-            score: 32,
-        },
-        {
-            href: "https://www.dolitashoes.com/blogs/news/the-history-and-evolution-of-shoes",
-            score: 17,
-        },
-        {
-            href: "https://allthatsinteresting.com/fascinating-history-footwear",
-            score: -100,
-        }
-    ];
-    console.time("stuff")
-    const browser = await puppeteer.launch();
-
-    const page1 = await browser.newPage();
-
-    for (site of testDB) {
-        await page1.goto(site.href);
-    }
-    console.timeEnd("stuff")
-    // console.log("summary:", summary);
-    browser.close();
-}
-
-// main();
 
 module.exports = Article;
 

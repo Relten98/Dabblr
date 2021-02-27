@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row">
-        <h1 class="mt-3 text-center header">{{main.header}}</h1>
+        <h1 class="mt-3 text-center header">{{mainArticle.tutorialType}}</h1>
     </div>
     <div class="flex-row d-flex mt-3 justify-content-between">
         <div class="d-flex flex-column col-6 me-3 all-articles">
             <div class="row main-article p-4">
                 <div class="d-flex flex-row justify-content-between">
-                    <h3 id="score">Score: {{main.score}}</h3>
+                    <h3 id="score">Score: {{mainArticle.score}}</h3>
                     <div class="voting">
                         <button class="voting-btn"><i class="far fa-thumbs-up"></i></button>
                         <button class="voting-btn"><i class="far fa-thumbs-down"></i></button>
@@ -14,12 +14,12 @@
                 </div>
 
                 <p id="summary">
-                    {{main.summary}}
+                    {{mainArticle.summary}}
                 </p>
 
                 <div class="row">
-                        <a href={{main.href}} target="_blank" id="source"><button
-                                type="button" id="source-btn">Source: {{main.source}}</button></a>
+                        <a href={{mainArticle.href}} target="_blank" id="source"><button
+                                type="button" id="source-btn">Source: {{mainArticle.source}}</button></a>
                 </div>
             </div>
 

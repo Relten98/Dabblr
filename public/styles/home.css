@@ -8,7 +8,7 @@ body {
 }
 
 .container-landing {
-    color: white;
+    color: #ECECEC;
     background-color: #506fd4;
     display: flex;
     justify-content: center;
@@ -29,9 +29,9 @@ body {
 .landing-btn {
     font-size: large;
     background-color: inherit;
-    color: white;
+    color: #F8F8F8;
     font-weight: 700;
-    border: 3px solid white;
+    border: 3px solid #F8F8F8;
     border-radius: 15px;
     padding: 3px 10px;
     transition: .3s background-color, .3s color;
