@@ -3,7 +3,6 @@ DROP DATABASE IF EXISTS dablr_db;
 -- Creates the "dablr_db" database --
 CREATE DATABASE dablr_db;
 
--- mod the "dablr_db" database --
 USE dablr_db;
 
 SELECT * FROM topics;

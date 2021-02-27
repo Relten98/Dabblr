@@ -1,4 +1,5 @@
 // Import our requirements
+const sequelize = require('sequelize');
 const puppeteer = require('puppeteer');
 const db = require('../models');
 
@@ -54,65 +55,70 @@ module.exports = (app) => {
         const topicID = req.params.topic;
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
+        // console.log('req.params.topic ', req.params.topic);
+        // Mamamia papapia, we ain't gettin no wiki-ria
+        // let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
+        // let [header, summary] = await wiki.getInfo(true);
 
-        let main;
-        let altArticles = [];
-        for (let i = 0; i < testDB.length; i++) {
-            let article = new Article(testDB[i].href, testDB[i].source, browser, page);
-            let [header, summary] = ["", ""];
-            let source = article.getSource();
-            if (i === 0) {
-                [header, summary] = await article.getInfo(true);
-                main = {
-                    header: header,
-                    summary: summary,
-                    score: testDB[i].score,
-                    href: testDB[i].href,
-                    source: source
-                };
-            }
-            else {
-                [header, summary] = await article.getInfo(false);
-                altArticles.push({
-                    header: header,
-                    summary: summary,
-                    score: testDB[i].score,
-                    href: testDB[i].href,
-                    source: source
-                });
-            }
-        }
-        let altVideo = [];
-        for (let i = 0; i < testDB.length; i++) {
-            let article = new Article(testDB[i].href, testDB[i].source, browser, page);
-            let [header, summary] = ["", ""];
-            let source = article.getSource();
-            if (i === 0) {
-                [header, summary] = await article.getInfo(true);
-                main = {
-                    header: header,
-                    summary: summary,
-                    score: videoDB[i].score,
-                    href: videoDB[i].href,
-                    source: source
-                };
-            }
-            else {
-                [header, summary] = await article.getInfo(false);
-                altVideo.push({
-                    header: header,
-                    summary: summary,
-                    score: videoDB[i].score,
-                    href: videoDB[i].href,
-                    source: source
-                });
-            }
-        }
+        // Model call functions
+        const getTopic = db.topic.getTopic(topicID);
+        // Note getTutorialsAndVotes is not a model method because it uses an "include" and we couldn't get that woking in a model folder.
+        const getTutorialsAndVotes = new Promise((resolve, reject) => {
+            const tutData = db.tutorial.findAll({
+                where: { fk_topicID: topicID },
+                attributes: {
+                    include: [
+                        [
+                            sequelize.literal(`
+                    (SELECT SUM(voteType)
+                    FROM votes AS votes
+                    WHERE votes.fk_tutorialID = tutorial.id
+                    )`),
+                            'votesSum',
+                        ],
+                    ],
+                },
+                order: [[sequelize.literal('votesSum'), 'DESC']],
+                raw: true,
+            });
 
-        res.render('index', {
-            main: main,
-            alts: altArticles,
-            topicChildren: topicChildren
+            resolve(tutData);
+        });
+
+        const getChildren = 'children topic db call goes here';
+        const getParent = 'parent topic db call goes here';
+
+        Promise.all([
+            getTopic,
+            getTutorialsAndVotes,
+            getChildren,
+            getParent,
+        ]).then((dbData) => {
+            const [topic, tutorials, children, parent] = dbData;
+            // console.log('dbData', dbData);
+
+            // refactor tutorials into videos and articles
+            const videos = [];
+            const articles = [];
+            tutorials.forEach((element) => {
+                if (element.tutorialType === 'video') {
+                    videos.push(element);
+                } else {
+                    articles.push(element);
+                }
+            });
+            // console.log('videos', videos);
+            // console.log('articles', articles);
+            const hbData = {
+                // href: wiki.href,
+                header: topic.topicName,
+                videos,
+                articles,
+                // source: wiki.getSource()
+            };
+            // The information belowe will feed into the handlebar renderer
+            // Handlebar renderer
+            res.render('index', hbData);
         });
     });
 

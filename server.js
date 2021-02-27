@@ -1,6 +1,7 @@
 // Import our requirements
 const express = require('express');
 const exphbs = require('express-handlebars');
+require('dotenv').config();
 const birds = 15000;
 
 // Load models folder
@@ -18,31 +19,18 @@ app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Static directory
-<<<<<<< HEAD
-app.use(express.static('public'));
-
-// Starts the server to begin listening
-db.sequelize
-    .sync()
-    .then(() =>
-        app.listen(PORT, () =>
-            console.log(`${birds} ducks are listening in on PORT ${PORT}`)
-        )
-    );
-=======
 app.use(express.static('public/styles'))
 
 // Routes
 require(`./routes/publicRoutes.js`)(app);
 
-//Starts the server to begin listening
-// db.sequelize
-//   .sync()
-//   .then(() =>
-//     app.listen(PORT, () => console.log(`${birds} ducks are listening in on PORT ${PORT}`))
-//   )
+// Starts the server to begin listening
+db.sequelize
+  .sync()
+  .then(() =>
+    app.listen(PORT, () => console.log(`${birds} ducks are listening in on PORT ${PORT}`))
+  )
 
-app.listen(PORT, () => {
-  console.log(`${birds} DUCKS ARE LISTENING IN ON PORT ${PORT}`);
-})
->>>>>>> 2812f02959fc8a08ae4fbb6059ae9ef701bb4b88
+// app.listen(PORT, () => {
+//   console.log(`${birds} DUCKS ARE LISTENING IN ON PORT ${PORT}`);
+// })

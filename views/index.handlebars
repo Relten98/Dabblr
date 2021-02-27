@@ -60,9 +60,10 @@
 
             </div>
         </div>
-        {{!-- <div class="all-videos col-6 ms-3">
+        {{#if video_list}} 
+        <div class="all-videos col-6 ms-3">
             <div class="d-flex flex-column col-6 me-3">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                <iframe width="560" height="315" src={{video}} frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 <div class="input-group mt-3">
@@ -71,7 +72,12 @@
                     <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
                 </div>
             </div>
-        </div> --}}
+        </div> 
+        {{else}}
+
+    <p>No video provided!</p>
+
+{{/if}}}}
     </div>
     <div class="flex-row mt-3 mb-5">
         <div class="col-12 d-flex justify-content-around children">
