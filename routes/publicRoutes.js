@@ -21,16 +21,16 @@ let testDB = [
 ];
 let videoDB = [
     {
-        href:"https://youtube.com/watch?v=0EtsSdCPxV8",
+        href: "https://youtube.com/watch?v=0EtsSdCPxV8",
         score: 1
     },
     {
-        href:"https://youtube.com/watch?v=JLrL-MWGu80",
+        href: "https://youtube.com/watch?v=JLrL-MWGu80",
         score: 2
-        
+
     },
     {
-        href:"https://youtube.com//watch?v=vazVWZXnTX8",
+        href: "https://youtube.com//watch?v=vazVWZXnTX8",
         score: 3
 
     }
@@ -45,7 +45,7 @@ let topicChildren = [
         name: "child topic 2"
     },
     {
-        topicID: 3, 
+        topicID: 3,
         name: "child topic 3"
     }
 ]
@@ -122,7 +122,9 @@ module.exports = (app) => {
         });
     });
 
-
+    app.get('/', (req, res) => {
+        res.render('index')
+    })
     // app.get('/', async (req, res) => {
     //     const browser = await puppeteer.launch();
     //     const page = await browser.newPage();

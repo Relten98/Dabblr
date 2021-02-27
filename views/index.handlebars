@@ -18,9 +18,9 @@
                 </p>
 
                 <div class="row">
-                        <a href={{main.href}} target="_blank" id="source"><button
-                                type="button" id="source-btn">Source: {{main.source}}</button></a>
-                    </div>
+                    <a href={{main.href}} target="_blank" id="source"><button type="button" id="source-btn">Source:
+                            {{main.source}}</button></a>
+                </div>
             </div>
 
             <div class="row">
@@ -39,31 +39,30 @@
                     <div class="alt-article mt-3 px-0">
                         <h5 class="alt-header px-3 py-2">{{header}}</h5>
 
-                            <p class="alt-summary px-3">
-                                {{summary}}
-                            </p>
-                            <div class="d-flex flex-row justify-content-between px-3">
-                                <h4>Score: {{score}}</h4>
-                                <div class="voting">
-                                    <button class="alt-voting-btn"><i class="far fa-thumbs-up"></i></button>
-                                    <button class="alt-voting-btn"><i class="far fa-thumbs-down"></i></button>
-                                </div>
+                        <p class="alt-summary px-3">
+                            {{summary}}
+                        </p>
+                        <div class="d-flex flex-row justify-content-between px-3">
+                            <h4>Score: {{score}}</h4>
+                            <div class="voting">
+                                <button class="alt-voting-btn"><i class="far fa-thumbs-up"></i></button>
+                                <button class="alt-voting-btn"><i class="far fa-thumbs-down"></i></button>
                             </div>
-                            <div class="row px-3 pb-2">
-                                <a href={{href}}
-                                    target="_blank"><button type="button" class="alt-source-btn">Source:
-                                        {{source}}</button></a>
-                            </div>
+                        </div>
+                        <div class="row px-3 pb-2">
+                            <a href={{href}} target="_blank"><button type="button" class="alt-source-btn">Source:
+                                    {{source}}</button></a>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
 
             </div>
         </div>
-        {{#if video_list}} 
+        {{#if video_list}}
         <div class="all-videos col-6 ms-3">
             <div class="d-flex flex-column col-6 me-3">
-                <iframe width="560" height="315" src={{video}} frameborder="0"
+                <iframe width="560" height="315" src={{href}} frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 <div class="input-group mt-3">
@@ -72,12 +71,12 @@
                     <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
                 </div>
             </div>
-        </div> 
+        </div>
         {{else}}
 
-    <p>No video provided!</p>
+        <p>No video provided!</p>
 
-{{/if}}}}
+        {{/if}}
     </div>
     <div class="flex-row mt-3 mb-5">
         <div class="col-12 d-flex justify-content-around children">

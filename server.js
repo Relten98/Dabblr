@@ -25,12 +25,12 @@ app.use(express.static('public/styles'))
 require(`./routes/publicRoutes.js`)(app);
 
 // Starts the server to begin listening
-db.sequelize
-  .sync()
-  .then(() =>
-    app.listen(PORT, () => console.log(`${birds} ducks are listening in on PORT ${PORT}`))
-  )
+// db.sequelize
+//   .sync()
+//   .then(() =>
+//     app.listen(PORT, () => console.log(`${birds} ducks are listening in on PORT ${PORT}`))
+//   )
 
-// app.listen(PORT, () => {
-//   console.log(`${birds} DUCKS ARE LISTENING IN ON PORT ${PORT}`);
-// })
+app.listen(PORT, () => {
+  console.log(`${birds} DUCKS ARE LISTENING IN ON PORT ${PORT}`);
+})
