@@ -47,12 +47,11 @@ module.exports = (app) => {
                 getTutorialsAndVotes,
                 getChild,
                 getParent,
-
             ]).then((dbData) => {
                 const [topic, tutorials, children, parent] = dbData;
                 if (!dbData[0]) {
-                    return res.status(400).send('Topic does not exist')
-                };
+                    return res.status(400).send('Topic does not exist');
+                }
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
@@ -62,45 +61,33 @@ module.exports = (app) => {
                     } else {
                         articles.push(element);
                     }
-                    console.log('dbData', dbData);
+                    // console.log('dbData', dbData);
                 });
-
-
+                // Data to handlebars
                 const hbData = {
+                    parent,
                     header: topic.topicName,
                     videos,
                     articles,
+                    children,
                 };
+                // console.log(hbData);
 
                 // The information belowe will feed into the handlebar renderer
                 // Handlebar renderer
                 res.render('index', hbData);
             });
-
-            // Data to handlebars
-            const hbData = {
-                parent: topic.parentTopicID,
-                header: topic.topicName,
-                videos,
-                articles,
-                children,
-            };
-            console.log(hbData);
-
-            // Handlebar renderer
-            res.render('index', hbData);
-
-} catch (error) {
-    res.status(500).send(
-        'There was a problem retrieving from the database'
-    );
-}
+        } catch (error) {
+            res.status(500).send(
+                'There was a problem retrieving from the database'
+            );
+        }
     });
 
-app.get('/', async (req, res) => {
-    const hbData = {
-        header: 'Home Page',
-    };
-    res.render('index', hbData);
-});
+    app.get('/', async (req, res) => {
+        const hbData = {
+            header: 'Home Page',
+        };
+        res.render('index', hbData);
+    });
 };
