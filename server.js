@@ -38,3 +38,7 @@ db.sequelize
             console.log(`${birds} ducks are listening in on PORT ${PORT}`)
         )
     );
+
+// app.listen(PORT, () =>
+//     console.log(`${birds} ducks are listening in on PORT ${PORT}`)
+// )
