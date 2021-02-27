@@ -89,29 +89,17 @@ module.exports = (app) => {
 
         // Makes all database calls
         try {
-        Promise.all([
-            getTopic,
-            getTutorialsAndVotes,
-            getChild,
-            getParent,
-
-        ]).then((dbData) => {
-            const [topic, tutorials, children, parent] = dbData;
-            if (!dbData[0]) {
-                return res.status(400).send('Topic does not exist')
-            };
-            // Refactor tutorials into videos and articles
-            const videos = [];
-            const articles = [];
-            tutorials.forEach((element) => {
-                if (element.tutorialType === 'video') {
-                    videos.push(element);
-                } else {
-                    articles.push(element);
+            Promise.all([
+                getTopic,
+                getTutorialsAndVotes,
+                getChild,
+                getParent,
+            ]).then((dbData) => {
+                const [topic, tutorials, children, parent] = dbData;
+                if (!dbData[0]) {
+                    return res.status(400).send('Topic does not exist');
                 }
-                console.log('dbData', dbData);
-
-                // refactor tutorials into videos and articles
+                // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
                 tutorials.forEach((element) => {
@@ -120,39 +108,27 @@ module.exports = (app) => {
                     } else {
                         articles.push(element);
                     }
+                    // console.log('dbData', dbData);
                 });
-                // console.log('videos', videos);
-                // console.log('articles', articles);
+                // Data to handlebars
                 const hbData = {
-                    // href: wiki.href,
+                    parent,
                     header: topic.topicName,
                     videos,
                     articles,
-                    // source: wiki.getSource()
+                    children,
                 };
+                // console.log(hbData);
+
                 // The information belowe will feed into the handlebar renderer
                 // Handlebar renderer
                 res.render('index', hbData);
             });
-
-            // Data to handlebars
-            const hbData = {
-                parent: topic.parentTopicID,
-                header: topic.topicName,
-                videos,
-                articles,
-                children,
-            };
-            console.log(hbData);
-
-            // Handlebar renderer
-            res.render('index', hbData);
-        });
-    } catch (error) {
-        res.status(500).send(
-            'There was a problem retrieving from the database'
-        );
-    }
+        } catch (error) {
+            res.status(500).send(
+                'There was a problem retrieving from the database'
+            );
+        }
     });
 
     app.get('/', (req, res) => {
