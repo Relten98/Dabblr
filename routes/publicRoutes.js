@@ -10,10 +10,6 @@ module.exports = (app) => {
         const topicID = req.params.topic;
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
-        // console.log('req.params.topic ', req.params.topic);
-        // Mamamia papapia, we ain't gettin no wiki-ria
-        // let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
-        // let [header, summary] = await wiki.getInfo(true);
 
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
@@ -50,7 +46,10 @@ module.exports = (app) => {
                 getParent,
             ]).then((dbData) => {
                 const [topic, tutorials, children, parent] = dbData;
-                // console.log('dbData', dbData);
+                if (!dbData[0]) {
+                    return res.status(400).send('Topic does not exist');
+                }
+                console.log('dbData', dbData);
 
                 // refactor tutorials into videos and articles
                 const videos = [];
