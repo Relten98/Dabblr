@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let Vote = sequelize.define('vote', {
+    const Vote = sequelize.define('vote', {
         voteType: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
 
     Vote.associate = (models) => {
         Vote.belongsTo(models.tutorial, {
-            foreignKey: 'fk_tutorialID',
+            foreignKey: { name: 'fk_tutorialID', allowNull: false },
             onDelete: 'CASCADE',
         });
         Vote.belongsTo(models.user, {
-            foreignKey: 'fk_userID',
+            foreignKey: { name: 'fk_userID', allowNull: false },
             onDelete: 'CASCADE',
         });
     };
