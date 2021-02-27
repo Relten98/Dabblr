@@ -36,10 +36,9 @@ class Article {
     getSummary(long) {
         return new Promise(async resolve => {
             let paragraphElem = await this.page.$('p');
-            let paragraph;
+            let paragraph = "";
             try {
                 paragraph = await this.page.evaluate(el => el.textContent, paragraphElem);
-                resolve(paragraph)
             } catch (error) {
                 resolve("No summary available.")
             }

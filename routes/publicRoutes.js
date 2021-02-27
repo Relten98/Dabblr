@@ -45,20 +45,12 @@ module.exports = (app) => {
                 getTutorialsAndVotes,
                 getChild,
                 getParent,
-<<<<<<< HEAD
 
             ]).then(async (dbData) => {
                 const [topic, tutorials, children, parent] = dbData;
                 if (!dbData[0]) {
                     return res.status(400).send('Topic does not exist')
                 };
-=======
-            ]).then((dbData) => {
-                const [topic, tutorials, children, parent] = dbData;
-                if (!dbData[0]) {
-                    return res.status(400).send('Topic does not exist');
-                }
->>>>>>> c557cff13473ffb6edf64b5735dc269f8ebb6b68
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
