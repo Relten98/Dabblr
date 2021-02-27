@@ -18,7 +18,22 @@ let testDB = [
         score: -100,
     }
 ];
+let videoDB = [
+    {
+        href:"https://youtube.com/watch?v=0EtsSdCPxV8",
+        score: 1
+    },
+    {
+        href:"https://youtube.com/watch?v=JLrL-MWGu80",
+        score: 2
+        
+    },
+    {
+        href:"https://youtube.com//watch?v=vazVWZXnTX8",
+        score: 3
 
+    }
+];
 let topicChildren = [
     {
         topicID: 1,
@@ -39,56 +54,6 @@ module.exports = (app) => {
         const topicID = req.params.topic;
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
-<<<<<<< HEAD
-        console.log('req.params.topic ', req.params.topic);
-        // Mamamia papapia, we ain't gettin no wiki-ria
-        // let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
-        // let [header, summary] = await wiki.getInfo(true);
-
-        // Model call functions
-        const getTopic = db.topic.getTopic(topicID);
-        const getTutorials = 'tutorial db call goes here';
-        const getVotes = 'vote db call goes here';
-        const getChildren = 'children topic db call goes here';
-        const getParent = 'parent topic db call goes here';
-
-        Promise.all([
-            getTopic,
-            getTutorials,
-            getVotes,
-            getChildren,
-            getParent,
-        ]).then((dbData) => {
-            const [topic, tutorials, votes, children, parent] = dbData;
-
-            // console.log('topicName ', topicName)
-            const hbData = {
-                // href: wiki.href,
-                header: topic.topicName,
-                score: '+9001',
-                // score: wiki.score,
-                summary: 'the cake is a lie',
-                // source: wiki.getSource()
-            };
-            // The information belowe will feed into the handlebar renderer
-            // Handlebar renderer
-            res.render('index', hbData);
-        });
-    });
-
-    app.get('/', async (req, res) => {
-        const hbData = {
-            // href: wiki.href,
-            header: 'Home Page',
-            score: '+9001',
-            // score: wiki.score,
-            summary: 'the cake is a lie',
-            // source: wiki.getSource()
-        };
-        res.render('index', hbData);
-    });
-};
-=======
 
         let main;
         let altArticles = [];
@@ -113,6 +78,32 @@ module.exports = (app) => {
                     summary: summary,
                     score: testDB[i].score,
                     href: testDB[i].href,
+                    source: source
+                });
+            }
+        }
+        let altVideo = [];
+        for (let i = 0; i < testDB.length; i++) {
+            let article = new Article(testDB[i].href, testDB[i].source, browser, page);
+            let [header, summary] = ["", ""];
+            let source = article.getSource();
+            if (i === 0) {
+                [header, summary] = await article.getInfo(true);
+                main = {
+                    header: header,
+                    summary: summary,
+                    score: videoDB[i].score,
+                    href: videoDB[i].href,
+                    source: source
+                };
+            }
+            else {
+                [header, summary] = await article.getInfo(false);
+                altVideo.push({
+                    header: header,
+                    summary: summary,
+                    score: videoDB[i].score,
+                    href: videoDB[i].href,
                     source: source
                 });
             }
@@ -154,4 +145,3 @@ module.exports = (app) => {
     // })
 }
 // haha code go boom
->>>>>>> 2812f02959fc8a08ae4fbb6059ae9ef701bb4b88
