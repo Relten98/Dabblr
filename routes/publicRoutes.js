@@ -61,7 +61,6 @@ module.exports = (app) => {
                     } else {
                         articles.push(element);
                     }
-                    // console.log('dbData', dbData);
                 });
                 // Data to handlebars
                 const hbData = {
@@ -71,9 +70,6 @@ module.exports = (app) => {
                     articles,
                     children,
                 };
-                // console.log(hbData);
-
-                // The information belowe will feed into the handlebar renderer
                 // Handlebar renderer
                 res.render('index', hbData);
             });
