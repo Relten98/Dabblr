@@ -1,23 +1,44 @@
 body {
     box-sizing: border-box;
-    color: white;
-    background-color: #506fd4;
+    background-color: #ECECEC;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    width: 100vw;
-    height: 100vh;
+.container-landing {
+    color: white;
+    background-color: #506fd4;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-} 
-                     
-.header {
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.landing {
+    margin: 0;
+}
+
+.header-landing {
     position: relative;
     top: -15vh;
+}
+
+.landing-btn {
+    font-size: large;
+    background-color: inherit;
+    color: white;
+    font-weight: 700;
+    border: 3px solid white;
+    border-radius: 15px;
+    padding: 3px 10px;
+    transition: .3s background-color, .3s color;
+}
+
+.landing-btn:hover {
+    background-color: #F8F8F8;
+    color: #506fd4;
+    border-color: #F8F8F8;
 }

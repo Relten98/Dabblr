@@ -19,13 +19,19 @@ app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Static directory
-app.use(express.static('public/styles'));
+app.use(express.static('public'));
+
+require('./routes/publicRoutes')(app);
 
 // Starts the server to begin listening
-db.sequelize
-    .sync()
-    .then(() =>
-        app.listen(PORT, () =>
-            console.log(`${birds} ducks are listening in on PORT ${PORT}`)
-        )
-    );
+// db.sequelize
+//     .sync()
+//     .then(() =>
+//         app.listen(PORT, () =>
+//             console.log(`${birds} ducks are listening in on PORT ${PORT}`)
+//         )
+//     );
+
+app.listen(PORT, () =>
+    console.log(`${birds} ducks are listening in on PORT ${PORT}`)
+)

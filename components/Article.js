@@ -81,11 +81,16 @@ async function main() {
             score: -100,
         }
     ];
+    console.time("stuff")
     const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    let wiki = new Article("https://en.wikipedia.org/wiki/Footwear", 32, browser, page);
-    let [header, summary] = await wiki.getInfo(true);
-    console.log("summary:", summary);
+
+    const page1 = await browser.newPage();
+
+    for (site of testDB) {
+        await page1.goto(site.href);
+    }
+    console.timeEnd("stuff")
+    // console.log("summary:", summary);
     browser.close();
 }
 
