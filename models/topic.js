@@ -24,10 +24,11 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: 'cascade',
         })
     }
-    Topic.getParent = (parentTopicID) => Topic.findOne({ where: { id: parentTopicID } });
+    
+// Parent and child
+    Topic.getParent = (parentTopicID) => Topic.findOne({ where: { id: parentTopicID }, raw: true });
 
-    Topic.getChild = (childTopicID) => Topic.findAll({ where: { id: parentTopicID } });
+    Topic.getChild = (currentTopicID) => Topic.findAll({ where: { parentTopicID: currentTopicID }, raw: true });
     
     return Topic
 }
-W
