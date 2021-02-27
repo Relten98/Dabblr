@@ -14,15 +14,21 @@ module.exports = (sequelize, DataTypes) => {
 
     Topic.associate = (models) => {
         models.topic.hasOne(models.topic, {
-            foreignKey: 'parentTopicID',
+            foreignKey: { name: 'parentTopicID', allowNull: false },
         });
         models.topic.belongsTo(models.topic, {
-            foreignKey: 'parentTopicID',
+            foreignKey: { name: 'parentTopicID', allowNull: false },
         });
         models.topic.hasMany(models.tutorial, {
-            foreignKey: 'fk_topicID',
+            foreignKey: { name: 'fk_topicID', allowNull: false },
             onDelete: 'cascade',
-        });
-    };
-    return Topic;
-};
+        })
+    }
+    
+// Parent and child
+    Topic.getParent = (parentTopicID) => Topic.findOne({ where: { id: parentTopicID }, raw: true });
+
+    Topic.getChild = (currentTopicID) => Topic.findAll({ where: { parentTopicID: currentTopicID }, raw: true });
+    
+    return Topic
+}
