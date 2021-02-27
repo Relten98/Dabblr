@@ -1,6 +1,7 @@
 // Import our requirements
 const express = require('express');
 const exphbs = require('express-handlebars');
+require('dotenv').config();
 const birds = 15000;
 
 // Load models folder
