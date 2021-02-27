@@ -3,12 +3,13 @@ const sequelize = require('sequelize');
 const puppeteer = require('puppeteer');
 const db = require('../models');
 
-// const Article = require('./components/Article');
-
 module.exports = (app) => {
     app.get('/topics/:topic', async (req, res) => {
         const topicID = req.params.topic;
+        const parentTopicID = req.params.topic;
         const browser = await puppeteer.launch();
+
+        // We forgot what this did, what is this for?
         const page = await browser.newPage();
 
         // Model call functions
@@ -35,19 +36,31 @@ module.exports = (app) => {
 
             resolve(tutData);
         });
+        // Parent and child model methods
+        const getChild = db.topic.getChild(topicID);
+        const getParent = db.topic.getParent(parentTopicID);
 
-        const getChildren = 'children topic db call goes here';
-        const getParent = 'parent topic db call goes here';
+        // Makes all database calls
         try {
-            Promise.all([
-                getTopic,
-                getTutorialsAndVotes,
-                getChildren,
-                getParent,
-            ]).then((dbData) => {
-                const [topic, tutorials, children, parent] = dbData;
-                if (!dbData[0]) {
-                    return res.status(400).send('Topic does not exist');
+        Promise.all([
+            getTopic,
+            getTutorialsAndVotes,
+            getChild,
+            getParent,
+
+        ]).then((dbData) => {
+            const [topic, tutorials, children, parent] = dbData;
+            if (!dbData[0]) {
+                return res.status(400).send('Topic does not exist')
+            };
+            // Refactor tutorials into videos and articles
+            const videos = [];
+            const articles = [];
+            tutorials.forEach((element) => {
+                if (element.tutorialType === 'video') {
+                    videos.push(element);
+                } else {
+                    articles.push(element);
                 }
                 console.log('dbData', dbData);
 
@@ -74,21 +87,30 @@ module.exports = (app) => {
                 // Handlebar renderer
                 res.render('index', hbData);
             });
-        } catch (error) {
-            res.status(500).send(
-                'There was a problem retrieving from the database'
-            );
-        }
+
+            // Data to handlebars
+            const hbData = {
+                parent: topic.parentTopicID,
+                header: topic.topicName,
+                videos,
+                articles,
+                children,
+            };
+            console.log(hbData);
+
+            // Handlebar renderer
+            res.render('index', hbData);
+        });
+    } catch (error) {
+        res.status(500).send(
+            'There was a problem retrieving from the database'
+        );
+    }
     });
 
     app.get('/', async (req, res) => {
         const hbData = {
-            // href: wiki.href,
             header: 'Home Page',
-            score: '+9001',
-            // score: wiki.score,
-            summary: 'the cake is a lie',
-            // source: wiki.getSource()
         };
         res.render('index', hbData);
     });
