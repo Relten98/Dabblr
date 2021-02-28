@@ -65,7 +65,6 @@ module.exports = (app) => {
                     }
                 });
                 let [mainVideo, ...altVideos] = videos;
-                console.log("HAYYYYYY",mainVideo)
                 let [mainArticle, ...altArticles] = articles;
                 res.render('index', {
                     mainArticle,
@@ -77,8 +76,6 @@ module.exports = (app) => {
                     header: topic.topicName,
                     children,
                 });
-                
-                console.log("HAYYYasdYYY",mainArticle)
             });
         } catch (error) {
             res.status(500).send(
