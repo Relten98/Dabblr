@@ -79,9 +79,6 @@ class Article {
             };
             [hbObject.header, hbObject.summary] = await this.getInfo(long);
             resolve(hbObject);
-
-
-
         });
     }
 }
