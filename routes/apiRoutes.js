@@ -35,6 +35,7 @@ module.exports = (app) => {
 
         db.vote
             .create({
+                // voteType = 1 or -1
                 voteType: req.body.voteType,
                 fk_tutorialID: req.body.tutorialID,
                 fk_userID: userID,

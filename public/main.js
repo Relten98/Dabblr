@@ -1,5 +1,6 @@
 function init() {
     console.log("I'm initiated");
+    // Posting a new article to db.
     $('#submit-article').click(function (event) {
         event.preventDefault();
         let body = {};
@@ -32,6 +33,26 @@ function init() {
             location.reload();
         });
     });
+
+    // Increase/decrease a tutorial's votes sum through POST request to db.
+    $('.voting').click(event => {
+        event.preventDefault();
+        let voteType = $(event.target).parent().attr("data-votetype");
+        let tutorialID = $(event.target).parent().parent().attr("data-tutorialid");
+        $.ajax({
+            type: "POST",
+            url: "/api/vote",
+            data: {
+                voteType,
+                tutorialID
+            }
+        }).then(function(data) {
+            console.log(data);
+            location.reload();
+        });
+        
+    })
+
     $('.child-topics').click((event) => {
         const topicID = event.target.dataset.topicid;
         console.log("topic id:", topicID);
