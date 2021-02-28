@@ -29,10 +29,10 @@
                     <div class="input-group px-0">
                         <input type="text" class="form-control" placeholder="Add article url"
                             aria-label="submit-article" aria-describedby="submit-article" id="input-article"
-                            data-tutorialType={{mainArticle.tutorialType}}
-                            data-topicID={{mainArticle.fk_topicID}}
+                            data-tutorialType={{mainArticle.tutorialType}} data-topicID={{mainArticle.fk_topicID}}
                             data-userID={{mainArticle.fk_userID}}>
-                        <a href=""></a><button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
+                        <a href=""></a><button class="btn btn-outline-secondary" type="button"
+                            id="submit-article">Submit</button>
                     </div>
             </div>
 
@@ -49,7 +49,8 @@
                             </div>
                         </div>
                         <div class="row px-3 pb-2">
-                            <a href={{tutorialLink}} target="_blank"><button type="button" class="alt-source-btn">Source:
+                            <a href={{tutorialLink}} target="_blank"><button type="button"
+                                    class="alt-source-btn">Source:
                                     {{tutorialLink}}</button></a>
                         </div>
                     </div>
@@ -58,10 +59,10 @@
 
             </div>
         </div>
-        {{#if video_list}}
+        {{#if mainVideo}}
         <div class="all-videos col-6 ms-3">
             <div class="d-flex flex-column col-6 me-3">
-                <iframe width="560" height="315" src={{href}} frameborder="0"
+                <iframe width="560" height="315" src="{{mainVideo.tutorialLink}}" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 <div class="input-group mt-3">
@@ -70,25 +71,51 @@
                     <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
                 </div>
             </div>
+
+            {{else}}
+
+            <p>No video provided!</p>
+
+            {{/if}}
+
+            <div class="alt-videos">
+                {{#each altVideos}}
+                <div class="row">
+
+                    <div class="alt-video mt-3 px-0">
+                        <div class="d-flex flex-row justify-content-between mt-2 px-3">
+                            <h4>Score: {{votesSum}}</h4>
+                            <div class="voting">
+                                <button class="alt-voting-btn"><i class="far fa-thumbs-up"></i></button>
+                                <button class="alt-voting-btn"><i class="far fa-thumbs-down"></i></button>
+                            </div>
+                        </div>
+                        <div class="row px-3 pb-2">
+                            <a href={{tutorialLink}} target="_blank"><button type="button"
+                                    class="alt-source-btn">Source:
+                                    {{tutorialLink}}</button></a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
         </div>
-        {{else}}
-
-        <p>No video provided!</p>
-
-        {{/if}}
     </div>
 
-    <div class="flex-row mt-1 mb-5">
-        <div class="col">
-            <h5 class="mt-4 text-center header">SubTopics</h5>
-        </div>
-        <div class="col-12 d-flex justify-content-around children">
-            {{#each children}}
-            <a href="{{id}}" data-parentTopicID={{parentTopicID}}>
-                <button type="button" class="child">{{topicName}}</button>
-            </a>
-            {{/each}}
-        </div>
+</div>
 
+<div class="flex-row mt-1 mb-5">
+    <div class="col">
+        <h5 class="mt-4 text-center header">SubTopics</h5>
     </div>
+    <div class="col-12 d-flex justify-content-around children">
+        {{#each children}}
+        <a href="{{id}}" data-parentTopicID={{parentTopicID}}>
+            <button type="button" class="child">{{topicName}}</button>
+        </a>
+        {{/each}}
+    </div>
+
+</div>
 </div>

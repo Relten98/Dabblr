@@ -73,7 +73,7 @@ function parse(html) {
     });
 
     const cleaned = [];
-    const totalResults = (results.length < 3) ? results.length : 3;
+    const totalResults = (results.length < 10) ? results.length : 10;
     for (var i = 0; i < totalResults; i++) {
         let res = results[i];
         if (res.link && res.link.trim() && res.title && res.title.trim()) {
