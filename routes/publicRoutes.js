@@ -1,6 +1,5 @@
 // Import our requirements
 const sequelize = require('sequelize');
-const puppeteer = require('puppeteer');
 const db = require('../models');
 
 const Article = require('../components/Article');
@@ -65,35 +64,15 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
-
-                // RIP Puppeteer
-                // const browser = await puppeteer.launch();
-                // const page = await browser.newPage();
-
-                // let mainArticle;
-                // let altArticles = [];
-                // for (let i = 0; i < articles.length; i++) {
-                //     // Create an Article object from data recieved from db. Article object is used for Puppeteer work.
-                //     let article = new Article(articles[i].tutorialLink, articles[i].votesSum, browser, page);
-                //     if (i === 0) {
-                //         mainArticle = await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName,
-                //             articles[i].fk_topicID, articles[i].fk_userID, true);
-                //     }
-                //     else {
-                //         let altArticle = await article.toHandleBars(articles[i].tutorialType, articles[i].tutorialName,
-                //             articles[i].fk_topicID, articles[i].fk_userID, true);
-                //         altArticles.push(altArticle);
-                //     }
-                // }
-                const hbData = {
+                let [mainArticle, ...altArticles] = articles;
+                res.render('index', {
+                    mainArticle,
+                    altArticles,
+                    // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
                     header: topic.topicName,
-                    videos,
-                    articles,
                     children,
-                };
-
-                return res.render('index', hbData);
+                });
             });
         } catch (error) {
             res.status(500).send(
