@@ -64,15 +64,21 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
+                let [mainVideo, ...altVideos] = videos;
+                console.log("HAYYYYYY",mainVideo)
                 let [mainArticle, ...altArticles] = articles;
                 res.render('index', {
                     mainArticle,
                     altArticles,
+                    mainVideo,
+                    altVideos,
                     // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
                     header: topic.topicName,
                     children,
                 });
+                
+                console.log("HAYYYasdYYY",mainArticle)
             });
         } catch (error) {
             res.status(500).send(
