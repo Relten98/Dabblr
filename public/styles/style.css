@@ -49,7 +49,7 @@ a, a:hover {
     color: white;
 }
 
-#submit-article, .child, button {
+#submit-article, #submit-video, .child, button {
     font-size: medium;
     background-color: inherit;
     color: #506fd4;
@@ -60,7 +60,7 @@ a, a:hover {
     transition: .3s background-color, .3s color;
 }
 
-#submit-article {
+#submit-article, #submit-video {
     border-radius: 5px;
 }
 
@@ -75,7 +75,7 @@ a, a:hover {
     border-radius: 10px;
 }
 
-#submit-article:hover, button:hover {
+#submit-article:hover, #submit-video:hover, button:hover {
     background-color: #506fd4;
     color: white;
 }
