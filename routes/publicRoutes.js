@@ -73,8 +73,6 @@ module.exports = (app) => {
                     header: topic.topicName,
                     children,
                 });
-
-                return res.render('index', hbData);
             });
         } catch (error) {
             res.status(500).send(
