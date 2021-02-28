@@ -8,7 +8,6 @@ const Article = require('../components/Article');
 module.exports = (app) => {
     app.get('/topics/:topic', async (req, res) => {
         const topicID = req.params.topic;
-        const parentTopicID = 1;
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
         // Note getTutorialsAndVotes is, here, instead of being a model method because it uses an "include" and we couldn't get that woking in a model folder.
@@ -36,7 +35,7 @@ module.exports = (app) => {
         // Parent and child model methods.
         // Each topic has parent and children.
         const getChild = db.topic.getChild(topicID);
-        const getParent = db.topic.getParent(parentTopicID);
+        const getParent = db.topic.getParent(topicID);
 
         // Makes all database calls
         try {
@@ -50,6 +49,8 @@ module.exports = (app) => {
                 if (!dbData[0]) {
                     return res.status(400).send('Topic does not exist');
                 }
+                parent.topicName = parent['parent.topicName'];
+                console.log('parent: ', parent['parent.topicName']);
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
@@ -60,14 +61,6 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
-
-                const hbData = {
-                    parent: topic.parentTopicID,
-                    header: topic.topicName,
-                    videos,
-                    articles,
-                    children,
-                };
 
                 // RIP Puppeteer
                 // const browser = await puppeteer.launch();
@@ -88,15 +81,15 @@ module.exports = (app) => {
                 //         altArticles.push(altArticle);
                 //     }
                 // }
-
-                res.render('index', {
-                    // mainArticle,
-                    // altArticles,
-
-                    // Parent will be used for parent button. Children will be used for children buttons.
+                const hbData = {
                     parent,
+                    header: topic.topicName,
+                    videos,
+                    articles,
                     children,
-                });
+                };
+
+                res.render('index', hbData);
             });
         } catch (error) {
             res.status(500).send(
