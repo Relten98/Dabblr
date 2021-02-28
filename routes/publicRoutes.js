@@ -70,9 +70,10 @@ module.exports = (app) => {
                 };
                 let [mainArticle, ...altArticles] = articles;
                 res.render('index', {
-                    mainArticle,
-                    altArticles,
-                    // parent will be used for parent button. Children will be used for children buttons.
+                    // mainArticle,
+                    // altArticles,
+
+                    // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
                     children
                 });
@@ -84,10 +85,9 @@ module.exports = (app) => {
         }
     });
 
-    // Home page.
+    // Home page information
     app.get('/', async (req, res) => {
         const hbData = {
-            // topics: topics,
             header: 'Home Page',
         };
         res.render('home', hbData);

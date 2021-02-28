@@ -1,8 +1,7 @@
 module.exports = {
     development: {
         username: 'root',
-        // password: process.env.SQL_PASSWORD,
-        password: 'Ouim@te1',
+        password: process.env.SQL_PASSWORD,
         database: 'dablr_db',
         host: '127.0.0.1',
         dialect: 'mysql',
