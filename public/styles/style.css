@@ -7,6 +7,9 @@ body {
     padding: 0;
 }
 
+
+/* Subject page css */
+
 .header {
     color: white;
     background-color: #506fd4;
@@ -79,4 +82,3 @@ a, a:hover {
     border-radius: 15px;
 
 }
-

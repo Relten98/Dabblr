@@ -1,10 +1,14 @@
 // Import our requirements
 const sequelize = require('sequelize');
+<<<<<<< HEAD
 const puppeteer = require('puppeteer');
+=======
+>>>>>>> 8f04ac8c847ce325ce175ba8163b02c7edb3685f
 const db = require('../models');
 
 const Article = require('../components/Article');
 
+<<<<<<< HEAD
 let testDB = [
     {
         href: "https://en.wikipedia.org/wiki/Footwear",
@@ -50,15 +54,25 @@ let topicChildren = [
     }
 ]
 
+=======
+>>>>>>> 8f04ac8c847ce325ce175ba8163b02c7edb3685f
 module.exports = (app) => {
+    // Topics route
     app.get('/topics/:topic', async (req, res) => {
         const topicID = req.params.topic;
+<<<<<<< HEAD
         const parentTopicID = req.params.topic;
         const browser = await puppeteer.launch();
 
         // We forgot what this did, what is this for?
         const page = await browser.newPage();
 
+=======
+        if (topicID === '1') {
+            res.redirect('/');
+            return;
+        }
+>>>>>>> 8f04ac8c847ce325ce175ba8163b02c7edb3685f
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
         // Note getTutorialsAndVotes is, here, instead of being a model method because it uses an "include" and we couldn't get that woking in a model folder.
@@ -83,9 +97,10 @@ module.exports = (app) => {
 
             resolve(tutData);
         });
-        // Parent and child model methods
+        // Parent and child model methods.
+        // Each topic has parent and children.
         const getChild = db.topic.getChild(topicID);
-        const getParent = db.topic.getParent(parentTopicID);
+        const getParent = db.topic.getParent(topicID);
 
         // Makes all database calls
         try {
@@ -94,11 +109,12 @@ module.exports = (app) => {
                 getTutorialsAndVotes,
                 getChild,
                 getParent,
-            ]).then((dbData) => {
+            ]).then(async (dbData) => {
                 const [topic, tutorials, children, parent] = dbData;
                 if (!dbData[0]) {
                     return res.status(400).send('Topic does not exist');
                 }
+                parent.topicName = parent['parent.topicName'];
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
@@ -108,21 +124,16 @@ module.exports = (app) => {
                     } else {
                         articles.push(element);
                     }
-                    // console.log('dbData', dbData);
                 });
-                // Data to handlebars
-                const hbData = {
+                let [mainArticle, ...altArticles] = articles;
+                res.render('index', {
+                    mainArticle,
+                    altArticles,
+                    // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
                     header: topic.topicName,
-                    videos,
-                    articles,
                     children,
-                };
-                // console.log(hbData);
-
-                // The information belowe will feed into the handlebar renderer
-                // Handlebar renderer
-                res.render('index', hbData);
+                });
             });
         } catch (error) {
             res.status(500).send(
@@ -131,6 +142,7 @@ module.exports = (app) => {
         }
     });
 
+<<<<<<< HEAD
     app.get('/', (req, res) => {
         res.render('index')
     })
@@ -162,10 +174,19 @@ module.exports = (app) => {
     // })
 }
 // haha code go boom
+=======
+    // Home page route
+>>>>>>> 8f04ac8c847ce325ce175ba8163b02c7edb3685f
     app.get('/', async (req, res) => {
-        const hbData = {
-            header: 'Home Page',
-        };
-        res.render('index', hbData);
+        db.topic.getChild(1).then((childData) => {
+            const hbData = {
+                children: childData,
+            };
+            res.render('home', hbData);
+        });
     });
+<<<<<<< HEAD
 ;
+=======
+};
+>>>>>>> 8f04ac8c847ce325ce175ba8163b02c7edb3685f
