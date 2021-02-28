@@ -24,31 +24,13 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Static directory
-<<<<<<< HEAD
-app.use(express.static('public/styles'))
-
-// Routes
-require(`./routes/publicRoutes.js`)(app);
-=======
 app.use(express.static('public'));
->>>>>>> 8f04ac8c847ce325ce175ba8163b02c7edb3685f
 
 // Routes
 require(`./routes/publicRoutes.js`)(app);
 require(`./routes/apiRoutes.js`)(app);
 
 // Starts the server to begin listening
-<<<<<<< HEAD
-// db.sequelize
-//   .sync()
-//   .then(() =>
-//     app.listen(PORT, () => console.log(`${birds} ducks are listening in on PORT ${PORT}`))
-//   )
-
-app.listen(PORT, () => {
-  console.log(`${birds} DUCKS ARE LISTENING IN ON PORT ${PORT}`);
-})
-=======
 db.sequelize
     .sync()
     .then(() =>
@@ -60,4 +42,3 @@ db.sequelize
 // app.listen(PORT, () =>
 //     console.log(`${birds} ducks are listening in on PORT ${PORT}`)
 // )
->>>>>>> 8f04ac8c847ce325ce175ba8163b02c7edb3685f
