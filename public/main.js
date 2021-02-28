@@ -13,6 +13,7 @@ function init() {
             data: body
         }).then(function(data) {
             console.log(data);
+            location.reload();
         });
     });
     $('.child-topics').click((event) => {
