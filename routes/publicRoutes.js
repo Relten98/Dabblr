@@ -50,7 +50,6 @@ module.exports = (app) => {
                     return res.status(400).send('Topic does not exist');
                 }
                 parent.topicName = parent['parent.topicName'];
-                console.log('parent: ', parent['parent.topicName']);
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
