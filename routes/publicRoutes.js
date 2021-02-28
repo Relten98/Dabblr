@@ -5,9 +5,13 @@ const db = require('../models');
 const Article = require('../components/Article');
 
 module.exports = (app) => {
+    // Topics route
     app.get('/topics/:topic', async (req, res) => {
         const topicID = req.params.topic;
-        const parentTopicID = 1;
+        if (topicID === '1') {
+            res.redirect('/');
+            return;
+        }
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
         // Note getTutorialsAndVotes is, here, instead of being a model method because it uses an "include" and we couldn't get that woking in a model folder.
@@ -35,7 +39,7 @@ module.exports = (app) => {
         // Parent and child model methods.
         // Each topic has parent and children.
         const getChild = db.topic.getChild(topicID);
-        const getParent = db.topic.getParent(parentTopicID);
+        const getParent = db.topic.getParent(topicID);
 
         // Makes all database calls
         try {
@@ -44,12 +48,12 @@ module.exports = (app) => {
                 getTutorialsAndVotes,
                 getChild,
                 getParent,
-
             ]).then(async (dbData) => {
                 const [topic, tutorials, children, parent] = dbData;
                 if (!dbData[0]) {
-                    return res.status(400).send('Topic does not exist')
-                };
+                    return res.status(400).send('Topic does not exist');
+                }
+                parent.topicName = parent['parent.topicName'];
                 // Refactor tutorials into videos and articles
                 const videos = [];
                 const articles = [];
@@ -60,22 +64,17 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
-
-                const hbData = {
-                    parent: topic.parentTopicID,
-                    header: topic.topicName,
-                    videos,
-                    articles,
-                    children,
-                };
                 let [mainArticle, ...altArticles] = articles;
                 res.render('index', {
                     mainArticle,
                     altArticles,
                     // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
-                    children
+                    header: topic.topicName,
+                    children,
                 });
+
+                return res.render('index', hbData);
             });
         } catch (error) {
             res.status(500).send(
@@ -84,11 +83,13 @@ module.exports = (app) => {
         }
     });
 
-    // Home page information
+    // Home page route
     app.get('/', async (req, res) => {
-        const hbData = {
-            header: 'Home Page',
-        };
-        res.render('home', hbData);
+        db.topic.getChild(1).then((childData) => {
+            const hbData = {
+                children: childData,
+            };
+            res.render('home', hbData);
+        });
     });
 };
