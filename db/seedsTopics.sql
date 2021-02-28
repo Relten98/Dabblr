@@ -1,28 +1,32 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (1, 'Babbleopia', '2020-03-19 16:43:49', '2020-12-01 15:53:22', 2);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (2, 'Meevee', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 10);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (3, 'Yambee', '2020-08-01 11:24:27', '2020-01-20 21:11:27', 1);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (4, 'Avamba', '2020-12-17 19:57:20', '2020-10-30 13:18:21', 12);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (5, 'Meejo', '2020-06-12 18:19:52', '2021-01-11 06:17:56', 10);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (6, 'Jamia', '2020-02-09 13:54:47', '2020-10-12 20:36:11', 6);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (7, 'Thoughtster', '2020-02-20 14:44:27', '2020-07-29 13:49:47', 13);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (8, 'Voonder', '2020-10-20 02:20:36', '2020-11-25 20:05:08', 8);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (9, 'Yoveo', '2020-05-02 02:03:52', '2019-12-14 08:24:20', 9);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (10, 'Gabspot', '2020-03-29 20:15:58', '2020-03-01 04:58:59', 7);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (11, 'Voolia', '2021-02-11 14:11:17', '2020-02-01 01:15:17', 8);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (12, 'Jaxspan', '2020-10-07 22:23:29', '2020-07-01 20:20:54', 12);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (13, 'Feedbug', '2020-11-22 01:49:14', '2020-09-03 01:36:35', 10);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (14, 'Mita', '2020-07-24 00:41:48', '2020-03-06 15:45:00', 5);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (15, 'Jabberbean', '2020-11-13 09:05:24', '2020-10-19 07:17:39', 9);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (16, 'Zoombox', '2020-09-01 10:56:20', '2021-02-07 11:29:58', 11);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (17, 'Thoughtmix', '2020-12-13 16:56:40', '2020-07-30 17:30:52', 3);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (18, 'Tazz', '2021-02-05 03:09:22', '2020-04-09 02:39:27', 14);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (19, 'Demivee', '2020-04-05 16:57:38', '2020-06-15 12:13:52', 11);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (20, 'Tekfly', '2019-11-20 19:07:38', '2020-04-25 18:09:24', 8);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (21, 'Blogtag', '2019-11-22 01:35:49', '2021-01-03 02:37:28', 15);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (22, 'Jabbersphere', '2019-11-12 02:08:34', '2020-10-30 05:36:06', 9);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (23, 'Quimm', '2020-11-22 15:46:27', '2020-01-20 07:39:25', 3);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (24, 'Avaveo', '2020-08-21 04:08:10', '2020-02-28 01:45:44', 9);
-insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (25, 'Zoomdog', '2020-08-30 20:32:53', '2020-07-18 14:33:54', 12);
+-- Home tab, only here for redirection
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (1, 'Home', '2020-03-19 16:43:49', '2020-12-01 15:53:22', 0);
+
+-- DB STARTS BELOW
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (2, 'Engineering', '2000-03-19 16:43:49', '2020-12-01 15:53:22', 1);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (3, 'Film', '1998-03-19 16:43:49', '2020-12-01 15:53:22', 1);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (4, 'Game Design', '1892-03-19 16:43:49', '2020-12-01 15:53:22', 1);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (5, 'Art', '1500-03-19 16:43:49', '2020-12-01 15:53:22', 1);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (6, 'Photography', '1875-03-19 16:43:49', '2020-12-01 15:53:22', 3);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (7, 'Drawing', '1880-03-19 16:43:49', '2020-12-01 15:53:22', 5);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (8, 'Painting', '1892-03-19 16:43:49', '2020-12-01 15:53:22', 5);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (9, 'Scupting', '1820-03-19 16:43:49', '2020-12-01 15:53:22', 5);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (10, '3D Modeling', '1845-03-19 16:43:49', '2020-12-01 15:53:22', 4);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (11, 'Modeling', '1863-03-19 16:43:49', '2020-12-01 15:53:22', 3);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (12, 'Video Editing', '1901-03-19 16:43:49', '2020-12-01 15:53:22', 3);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (13, 'Level Editing', '1956-03-19 16:43:49', '2020-12-01 15:53:22', 4);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (14, 'Character Design', '1930-03-19 16:43:49', '2020-12-01 15:53:22', 4);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (15, 'Sketching', '1938-03-19 16:43:49', '2020-12-01 15:53:22', 5);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (16, 'Charcoal', '1924-03-19 16:43:49', '2020-12-01 15:53:22', 15);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (17, 'Pencil', '1776-03-19 16:43:49', '2020-12-01 15:53:22', 15);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (18, 'Crayon', '2035-03-19 16:43:49', '2040-12-01 15:53:22', 15);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (19, 'Electronics', '2004-02-29 16:43:49', '2040-12-01 15:53:22', 2);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (20, 'Computers', '2004-02-29 16:43:49', '2040-12-01 15:53:22', 19);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (21, 'Computer Hardware', '2004-02-29 16:43:49', '2040-12-01 15:53:22', 19);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (22, 'Telecommunication', '2004-02-29 16:43:49', '2040-12-01 15:53:22', 20);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (23, 'Programming', '2004-02-29 16:43:49', '2040-12-01 15:53:22', 20);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (24, 'C++', '2004-02-29 16:43:49', '2040-12-01 15:53:22', 20);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (25, 'JavaScript', '2004-02-29 16:43:49', '2040-12-01 15:53:22', 20);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (26, 'Set Dressing', '1906-03-19 16:43:49', '2020-12-01 15:53:22', 13);
 SET FOREIGN_KEY_CHECKS=1;
