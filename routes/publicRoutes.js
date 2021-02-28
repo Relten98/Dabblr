@@ -64,9 +64,14 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
+                // The split between main and alt is made for styling purposes in index. 
                 let [mainVideo, ...altVideos] = videos;
-                console.log("HAYYYYYY",mainVideo)
                 let [mainArticle, ...altArticles] = articles;
+                // For loop shortens the link that will be displayed for styling purposes. 
+                for (let media of [mainVideo, ...altVideos, mainArticle, ...altArticles]) {
+                    let fullLink = media.tutorialLink.split('/');
+                    media.displayLink = fullLink[2] || media.tutorialLink;
+                }
                 res.render('index', {
                     mainArticle,
                     altArticles,
@@ -77,8 +82,6 @@ module.exports = (app) => {
                     header: topic.topicName,
                     children,
                 });
-                
-                console.log("HAYYYasdYYY",mainArticle)
             });
         } catch (error) {
             res.status(500).send(
