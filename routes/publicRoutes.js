@@ -6,8 +6,13 @@ const db = require('../models');
 const Article = require('../components/Article');
 
 module.exports = (app) => {
+    // Topics route
     app.get('/topics/:topic', async (req, res) => {
         const topicID = req.params.topic;
+        if (topicID === '1') {
+            res.redirect('/');
+            return;
+        }
         // Model call functions
         const getTopic = db.topic.getTopic(topicID);
         // Note getTutorialsAndVotes is, here, instead of being a model method because it uses an "include" and we couldn't get that woking in a model folder.
@@ -88,7 +93,7 @@ module.exports = (app) => {
                     children,
                 };
 
-                res.render('index', hbData);
+                return res.render('index', hbData);
             });
         } catch (error) {
             res.status(500).send(
@@ -97,11 +102,13 @@ module.exports = (app) => {
         }
     });
 
-    // Home page information
+    // Home page route
     app.get('/', async (req, res) => {
-        const hbData = {
-            header: 'Home Page',
-        };
-        res.render('home', hbData);
+        db.topic.getChild(1).then((childData) => {
+            const hbData = {
+                children: childData,
+            };
+            res.render('home', hbData);
+        });
     });
 };
