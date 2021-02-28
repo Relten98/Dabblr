@@ -55,6 +55,7 @@ a:hover {
 }
 
 #submit-article,
+#submit-video,
 .child,
 button {
     font-size: medium;
@@ -67,7 +68,7 @@ button {
     transition: 0.3s background-color, 0.3s color;
 }
 
-#submit-article {
+#submit-article, #submit-video {
     border-radius: 5px;
 }
 
@@ -83,6 +84,7 @@ button {
 }
 
 #submit-article:hover,
+#submit-video:hover,
 button:hover {
     background-color: #506fd4;
     color: white;
