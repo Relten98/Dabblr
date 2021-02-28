@@ -1,12 +1,11 @@
 body {
     box-sizing: border-box;
-    background-color: #ECECEC;
+    background-color: #ececec;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     margin: 0;
     padding: 0;
 }
-
 
 /* Subject page css */
 
@@ -18,7 +17,7 @@ body {
 }
 
 .main-article {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     border-radius: 15px;
     font-size: large;
 }
@@ -27,17 +26,23 @@ body {
     font-weight: 700;
 }
 
-a, a:hover {
+a,
+a:hover {
     text-decoration: none;
     color: inherit;
 }
 
 .alt-article {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     border-radius: 15px;
 }
+#main-video-voting {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
 .alt-video {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     border-radius: 15px;
 }
 
@@ -49,7 +54,9 @@ a, a:hover {
     color: white;
 }
 
-#submit-article, #submit-video, .child, button {
+#submit-article,
+.child,
+button {
     font-size: medium;
     background-color: inherit;
     color: #506fd4;
@@ -57,7 +64,7 @@ a, a:hover {
     border: 3px solid #506fd4;
     border-radius: 15px;
     padding: 3px 10px;
-    transition: .3s background-color, .3s color;
+    transition: 0.3s background-color, 0.3s color;
 }
 
 #submit-article, #submit-video {
@@ -75,7 +82,8 @@ a, a:hover {
     border-radius: 10px;
 }
 
-#submit-article:hover, #submit-video:hover, button:hover {
+#submit-article:hover,
+button:hover {
     background-color: #506fd4;
     color: white;
 }
@@ -84,5 +92,4 @@ a, a:hover {
     padding: 10px 0;
     border: 3px solid #506fd4;
     border-radius: 15px;
-
 }
