@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
-        <a href="{{parent.parentTopicID}}" data-parentTopicID={{parent.parentTopicID}}>
-            <button type="button" class="mt-2 child">{{parent.topicName}}</button>
-        </a>
+        <h5>Return to <a href="{{parent.parentTopicID}}" data-parentTopicID={{parent.parentTopicID}}>
+                <button type="button" class="mt-2 child">{{parent.topicName}}</button>
+            </a></h5>
     </div>
     <div class="row">
         <h1 class="mt-3 text-center header">{{header}}</h1>
@@ -80,7 +80,11 @@
             </div>
         </div> --}}
     </div>
-    <div class="flex-row mt-3 mb-5">
+
+    <div class="flex-row mt-1 mb-5">
+        <div class="col">
+            <h5 class="mt-4 text-center header">SubTopics</h5>
+        </div>
         <div class="col-12 d-flex justify-content-around children">
             {{#each children}}
             <a href="{{id}}" data-parentTopicID={{parentTopicID}}>
