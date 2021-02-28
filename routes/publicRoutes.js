@@ -70,9 +70,8 @@ module.exports = (app) => {
                 };
                 let [mainArticle, ...altArticles] = articles;
                 res.render('index', {
-                    // mainArticle,
-                    // altArticles,
-
+                    mainArticle,
+                    altArticles,
                     // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
                     children
