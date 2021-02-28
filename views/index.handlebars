@@ -6,20 +6,16 @@
         <div class="d-flex flex-column col-6 me-3 all-articles">
             <div class="row main-article p-4">
                 <div class="d-flex flex-row justify-content-between">
-                    <h3 id="score">Score: {{mainArticle.score}}</h3>
+                    <h3 id="score">Score: {{mainArticle.votesSum}}</h3>
                     <div class="voting">
                         <button class="voting-btn"><i class="far fa-thumbs-up"></i></button>
                         <button class="voting-btn"><i class="far fa-thumbs-down"></i></button>
                     </div>
                 </div>
 
-                <p id="summary">
-                    {{mainArticle.summary}}
-                </p>
-
                 <div class="row">
-                        <a href={{mainArticle.href}} target="_blank" id="source"><button
-                                type="button" id="source-btn">Source: {{mainArticle.source}}</button></a>
+                    <a href={{mainArticle.tutorialLink}} target="_blank" id="source"><button type="button"
+                            id="source-btn">Source: {{mainArticle.tutorialLink}}</button></a>
                 </div>
             </div>
 
@@ -28,7 +24,9 @@
                     <div class="input-group px-0">
                         <input type="text" class="form-control" placeholder="Add article url"
                             aria-label="submit-article" aria-describedby="submit-article" id="input-article"
-                            data-tutorialType={{mainArticle.tutorialType}} data-tutorialName={{mainArticle.tutorialName}} data-topicID={{mainArticle.topicID}} data-userID={{userID}}>
+                            data-tutorialType={{mainArticle.tutorialType}}
+                            data-tutorialName={{mainArticle.tutorialName}} data-topicID={{mainArticle.fk_topicID}}
+                            data-userID={{mainArticle.fk_userID}}>
                         <button class="btn btn-outline-secondary" type="button" id="submit-article">Submit</button>
                     </div>
             </div>
@@ -38,23 +36,17 @@
                 <div class="row">
 
                     <div class="alt-article mt-3 px-0">
-                        <h5 class="alt-header px-3 py-2">{{header}}</h5>
-
-                            <p class="alt-summary px-3">
-                                {{summary}}
-                            </p>
-                            <div class="d-flex flex-row justify-content-between px-3">
-                                <h4>Score: {{score}}</h4>
-                                <div class="voting">
-                                    <button class="alt-voting-btn"><i class="far fa-thumbs-up"></i></button>
-                                    <button class="alt-voting-btn"><i class="far fa-thumbs-down"></i></button>
-                                </div>
+                        <div class="d-flex flex-row justify-content-between mt-2 px-3">
+                            <h4>Score: {{votesSum}}</h4>
+                            <div class="voting">
+                                <button class="alt-voting-btn"><i class="far fa-thumbs-up"></i></button>
+                                <button class="alt-voting-btn"><i class="far fa-thumbs-down"></i></button>
                             </div>
-                            <div class="row px-3 pb-2">
-                                <a href={{href}}
-                                    target="_blank"><button type="button" class="alt-source-btn">Source:
-                                        {{source}}</button></a>
-                            </div>
+                        </div>
+                        <div class="row px-3 pb-2">
+                            <a href={{tutorialLink}} target="_blank"><button type="button" class="alt-source-btn">Source:
+                                    {{tutorialLink}}</button></a>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
