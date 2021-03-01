@@ -44,20 +44,27 @@ function postMediaData(inputType) {
     else input = $("#input-video");
     let body = {};
     if (!isValidInput(input.val())) {
-        return alert("Please enter a valid url");
+        $(`#${inputType}-alert`).show();
+        $(".btn-close").click(function () {
+            $(`#${inputType}-alert`).hide();
+        })
+        return;
     }
-    body.tutorialLink = input.val().trim();
-    body.tutorialType = input.attr("data-tutorialType");
-    body.topicID = input.attr("data-topicID");
-    
-    $.ajax({
-        type: "POST",
-        url: "/api/tutorial",
-        data: body
-    }).then(function (data) {
-        console.log(data);
-        location.reload();
-    });
+    else {
+        body.tutorialLink = input.val().trim();
+        body.tutorialType = input.attr("data-tutorialType");
+        body.topicID = input.attr("data-topicID");
+
+        $.ajax({
+            type: "POST",
+            url: "/api/tutorial",
+            data: body
+        }).then(function (data) {
+            console.log(data);
+            location.reload();
+        });
+    }
+
 }
 
 // Prevent bad input from getting passed to the server.
