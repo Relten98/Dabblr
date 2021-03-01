@@ -48,6 +48,5 @@ module.exports = (app) => {
                     'There was a problem adding to the database'
                 );
             });
-        res.send();
     });
 };
