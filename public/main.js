@@ -43,12 +43,13 @@ function postMediaData(inputType) {
     if (inputType === "article") input = $("#input-article");
     else input = $("#input-video");
     let body = {};
+    if (!isValidInput(input.val())) {
+        return alert("Please enter a valid url");
+    }
     body.tutorialLink = input.val().trim();
     body.tutorialType = input.attr("data-tutorialType");
     body.topicID = input.attr("data-topicID");
-    if (!isValidInput(body.tutorialLink)) {
-        return alert("Please enter a valid url");
-    }
+    
     $.ajax({
         type: "POST",
         url: "/api/tutorial",
