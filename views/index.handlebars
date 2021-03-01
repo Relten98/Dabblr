@@ -5,11 +5,87 @@
             </a></h5>
     </div>
     <div class="row">
-        <h1 class="mt-1 text-center header">{{header}}</h1>
+        <div class="col">
+            <h1 class="mt-1 text-center header">{{header}}</h1>
+        </div>
     </div>
-    {{!-- Written Articles --}}
-    <div class="flex-row d-flex mt-1 justify-content-between">
-        <div class="d-flex flex-column col-6 px-2 all-articles">
+
+    <div class="flex-lg-row d-flex flex-wrap mt-1 ">
+
+        {{!-- Videos --}}
+        {{#if mainVideo}}
+
+        <div class="d-flex flex-column col-xs-12 col-lg-6 px-2 order-lg-2">
+            <div class="row">
+                <div class="col">
+                    <h5 class=" text-center header">Video Tutorials</h5>
+                </div>
+            </div>
+
+            <div class="position-relative">
+
+                <div class="voting text-right" id="main-video-voting" data-tutorialID={{mainVideo.id}}>
+
+                    <button class="voting-btn" data-voteType="1"><i class="far fa-thumbs-up"
+                            aria-hidden="true"></i></button>
+                    <button class="voting-btn" data-voteType="-1"><i class="far fa-thumbs-down"
+                            aria-hidden="true"></i></button>
+                    <div class="d-flex justify-content-end">
+                        <p class="pull-right" id="score">Score: {{mainVideo.votesSum}}</p>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <iframe class="responsive-iframe" src="{{mainVideo.tutorialLink}}" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            {{!-- Submit Video Box --}}
+            <div class="row gx-0">
+                <h5 class="mt-3 ">Don't like these videos? Add a new one here:</h3>
+                    <div class="input-group ">
+                        <input type="text" class="form-control" placeholder="Add video url" aria-label="submit-video"
+                            aria-describedby="submit-vudei" id="input-video" data-tutorialType="video"
+                            data-topicID={{mainVideo.fk_topicID}} data-userID={{mainVideo.fk_userID}}>
+                        <button class="btn btn-outline-secondary" type="button" id="submit-video">Submit</button>
+                    </div>
+            </div>
+
+
+            {{else}}
+
+            <p>No video provided!</p>
+
+            {{/if}}
+
+            <div class="alt-videos">
+                {{#each altVideos}}
+                <div class="row gx-0">
+
+                    <div class="alt-video mt-2 mb-1 px-0">
+                        <div class="d-flex flex-row justify-content-between mt-2 px-3">
+                            <h4>Score: {{votesSum}}</h4>
+                            <div class="voting" data-tutorialID={{id}}>
+                                <button class="alt-voting-btn" data-voteType="1"><i
+                                        class="far fa-thumbs-up"></i></button>
+                                <button class="alt-voting-btn" data-voteType="-1"><i
+                                        class="far fa-thumbs-down"></i></button>
+                            </div>
+                        </div>
+                        <div class="row px-3 pb-2">
+                            <a href={{tutorialLink}} target="_blank"><button type="button"
+                                    class="alt-source-btn">Source:
+                                    {{tutorialLink}}</button></a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{!-- Written Articles --}}
+        <div class="col-xs-12 col-lg-6 px-2 all-articles order-lg-1">
+            <hr class="my-4 d-lg-none">
             <div class="row gx-0">
                 <div class="col">
                     <h5 class=" text-center header">Written Tutorials</h5>
@@ -18,14 +94,14 @@
             </div>
             <div class="row main-article p-4 gx-0">
                 <div class="d-flex flex-row justify-content-between">
-                    <h3 id="score">Score: {{mainArticle.votesSum}}</h3>
+                    <h4 id="score">Score: {{mainArticle.votesSum}}</h4>
                     <div class="voting" data-tutorialID={{mainArticle.id}}>
                         <button class="voting-btn" data-voteType="1"><i class="far fa-thumbs-up"></i></button>
                         <button class="voting-btn" data-voteType="-1"><i class="far fa-thumbs-down"></i></button>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row gx-0">
                     <a href={{mainArticle.tutorialLink}} target="_blank" id="source"><button type="button"
                             id="source-btn">Source: {{mainArticle.displayLink}}</button></a>
                 </div>
@@ -46,7 +122,7 @@
                 {{#each altArticles}}
                 <div class="row gx-0">
 
-                    <div class="alt-article mt-3">
+                    <div class="alt-article mt-2 mb-1">
                         <div class="d-flex flex-row justify-content-between mt-2 px-3">
                             <h4>Score: {{votesSum}}</h4>
                             <div class="voting" data-tutorialID={{id}}>
@@ -65,72 +141,11 @@
                 </div>
                 {{/each}}
 
-            </div>
-        </div>
-        {{!-- Videos --}}
-        {{#if mainVideo}}
-        <div class="d-flex flex-column col-6 px-2">
-            <div class="col">
-                <h5 class="text-center header">Video Tutorials</h5>
-            </div>
-            <div class="position-relative">
-
-                <div class="voting" id="main-video-voting" data-tutorialID={{mainVideo.id}}>
-                    <button class="voting-btn" data-voteType="1"><i class="far fa-thumbs-up"
-                            aria-hidden="true"></i></button>
-                    <button class="voting-btn" data-voteType="-1"><i class="far fa-thumbs-down"
-                            aria-hidden="true"></i></button>
-                </div>
-                <iframe width="640" height="315" src="{{mainVideo.tutorialLink}}" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
-            {{!-- Submit Video Box --}}
-            <div class="row gx-0">
-                <h5 class="mt-3">Don't like these videos? Add a new one here:</h5>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Add video url" aria-label="submit-video"
-                        aria-describedby="submit-video" id="input-video" data-tutorialType="video"
-                        data-topicID={{mainVideo.fk_topicID}} data-userID={{mainVideo.fk_userID}}>
-                    <button class="btn btn-outline-secondary" type="button" id="submit-video">Submit</button>
-                </div>
-            </div>
-
-
-            {{else}}
-
-            <p>No video provided!</p>
-
-            {{/if}}
-
-            <div class="alt-videos">
-                {{#each altVideos}}
-                <div class="row gx-0">
-
-                    <div class="alt-video mt-3 px-0">
-                        <div class="d-flex flex-row justify-content-between mt-2 px-3">
-                            <h4>Score: {{votesSum}}</h4>
-                            <div class="voting" data-tutorialID={{id}}>
-                                <button class="alt-voting-btn" data-voteType="1"><i
-                                        class="far fa-thumbs-up"></i></button>
-                                <button class="alt-voting-btn" data-voteType="-1"><i
-                                        class="far fa-thumbs-down"></i></button>
-                            </div>
-                        </div>
-                        <div class="row px-3 pb-2">
-                            <a href={{tutorialLink}} target="_blank"><button type="button"
-                                    class="alt-source-btn">Source:
-                                    {{displayLink}}</button></a>
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
             </div>
         </div>
     </div>
 
-    <div class="flex-row mt-1 mb-5">
+    <div class="flex-row mt-1 mb-1">
         <div class="col">
             <h5 class="mt-4 text-center header">SubTopics</h5>
         </div>
@@ -142,7 +157,11 @@
             {{/each}}
         </div>
     </div>
-
+    <footer class="footer ">
+        <div class=" text-center pb-2">
+            <span class="text-muted m-5">©2021 Dablr Inc</span>
+        </div>
+    </footer>
 
 
 

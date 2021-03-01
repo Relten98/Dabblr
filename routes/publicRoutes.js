@@ -64,11 +64,16 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
-                // The split between main and alt is made for styling purposes in index. 
+                // The split between main and alt is made for styling purposes in index.
                 let [mainVideo, ...altVideos] = videos;
                 let [mainArticle, ...altArticles] = articles;
                 // For loop shortens the link that will be displayed for styling purposes. Also adds a score of 0 if media doesn't have one.
-                for (let media of [mainVideo, ...altVideos, mainArticle, ...altArticles]) {
+                for (let media of [
+                    mainVideo,
+                    ...altVideos,
+                    mainArticle,
+                    ...altArticles,
+                ]) {
                     let fullLink = media.tutorialLink.split('/');
                     media.displayLink = fullLink[2] || media.tutorialLink;
                     if (!media.votesSum) media.votesSum = 0;
