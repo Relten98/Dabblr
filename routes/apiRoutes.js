@@ -3,11 +3,10 @@ const db = require('../models');
 
 module.exports = (app) => {
     app.post('/api/tutorial', (req, res) => {
-
         // console.log('req ', req);
-        
+
         // console.log('req.body ', JSON.stringify(req.body.tutorialType));
-        
+
         const userID = 1;
         db.tutorial
             .create({
@@ -16,15 +15,14 @@ module.exports = (app) => {
                 fk_topicID: req.body.topicID,
                 fk_userID: userID,
             })
-            .then(() => {
-                return res.status(201).send('Sucessfully added tutorial to database')
-            }
+            .then(() =>
+                res.status(201).send('Sucessfully added tutorial to database')
             )
             .catch((error) => {
-                console.log("error", error);
-                return res.status(500).send(
-                    'There was a problem adding to the database'
-                );
+                console.log('error', error);
+                return res
+                    .status(500)
+                    .send('There was a problem adding to the database');
             });
     });
 
@@ -35,6 +33,7 @@ module.exports = (app) => {
 
         db.vote
             .create({
+                // voteType = 1 or -1
                 voteType: req.body.voteType,
                 fk_tutorialID: req.body.tutorialID,
                 fk_userID: userID,
