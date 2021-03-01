@@ -1,12 +1,12 @@
 function init() {
     console.log("I'm initiated");
-    
+
     // Posting a new article/video to db.
-    $('#submit-article').click(function(event) {
+    $('#submit-article').click(function (event) {
         event.preventDefault();
         postMediaData('article')
     });
-    $('#submit-video').click(function(event) {
+    $('#submit-video').click(function (event) {
         event.preventDefault();
         postMediaData('video')
     });
@@ -23,11 +23,11 @@ function init() {
                 voteType,
                 tutorialID
             }
-        }).then(function(data) {
+        }).then(function (data) {
             console.log(data);
             location.reload();
         });
-        
+
     })
 
     $('.child-topics').click((event) => {
@@ -42,19 +42,37 @@ function postMediaData(inputType) {
     let input;
     if (inputType === "article") input = $("#input-article");
     else input = $("#input-video");
-    event.preventDefault();
-        let body = {};
-        body.tutorialLink = input.val();
-        body.tutorialType = input.attr("data-tutorialType");
-        body.topicID = input.attr("data-topicID");
-        $.ajax({
-            type: "POST",
-            url: "/api/tutorial",
-            data: body
-        }).then(function(data) {
-            console.log(data);
-            location.reload();
-        });
+    let body = {};
+    body.tutorialLink = input.val().trim();
+    body.tutorialType = input.attr("data-tutorialType");
+    body.topicID = input.attr("data-topicID");
+    if (!isValidInput(body.tutorialLink)) {
+        return alert("Please enter a valid url");
+    }
+    $.ajax({
+        type: "POST",
+        url: "/api/tutorial",
+        data: body
+    }).then(function (data) {
+        console.log(data);
+        location.reload();
+    });
+}
+
+// Prevent bad input from getting passed to the server.
+function isValidInput(inputURL) {
+    // null == undefined in JS (abstract equality). idk man I don't make the rules.
+    if (inputURL != null) {
+        let trimmedInput = inputURL.trim();
+        return (!trimmedInput.includes(' '))
+            && (trimmedInput.includes('.'))
+            // Url must contain letters. parseInt(string) = NaN if string has no numbers, and !NaN = true.
+            && (!parseInt(trimmedInput));
+    }
+    else {
+        return false;
+    }
+
 }
 
 $(document).ready(() => {
