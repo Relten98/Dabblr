@@ -88,7 +88,7 @@ button {
 
 #submit-article:hover,
 #submit-video:hover,
-#alert-btn:hover
+#alert-btn:hover,
 button:hover {
     background-color: #506fd4;
     color: white;

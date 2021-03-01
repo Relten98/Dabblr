@@ -13,6 +13,7 @@ function init() {
 
     // Increase/decrease a tutorial's votes sum through POST request to db.
     $('.voting').click((event) => {
+        console.log("clicked");
         event.preventDefault();
         let voteType = $(event.target).parent().attr('data-votetype');
         let tutorialID = $(event.target)
@@ -53,6 +54,7 @@ function postMediaData(inputType) {
         return;
     }
     else {
+        console.log("input is valid");
         body.tutorialLink = input.val().trim();
         body.tutorialType = input.attr("data-tutorialType");
         body.topicID = input.attr("data-topicID");
