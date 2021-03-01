@@ -6,33 +6,35 @@ function init() {
         event.preventDefault();
         postMediaData('article')
     });
-    $('#submit-video').click(function (event) {
+    $('#submit-video').click((event) => {
         event.preventDefault();
         postMediaData('video')
     });
 
     // Increase/decrease a tutorial's votes sum through POST request to db.
-    $('.voting').click(event => {
+    $('.voting').click((event) => {
         event.preventDefault();
-        let voteType = $(event.target).parent().attr("data-votetype");
-        let tutorialID = $(event.target).parent().parent().attr("data-tutorialid");
+        let voteType = $(event.target).parent().attr('data-votetype');
+        let tutorialID = $(event.target)
+            .parent()
+            .parent()
+            .attr('data-tutorialid');
         $.ajax({
-            type: "POST",
-            url: "/api/vote",
+            type: 'POST',
+            url: '/api/vote',
             data: {
                 voteType,
-                tutorialID
-            }
-        }).then(function (data) {
+                tutorialID,
+            },
+        }).then((data) => {
             console.log(data);
             location.reload();
         });
-
-    })
+    });
 
     $('.child-topics').click((event) => {
         const topicID = event.target.dataset.topicid;
-        console.log("topic id:", topicID);
+        console.log('topic id:', topicID);
         window.location.href = `${topicID}`;
     });
 }
