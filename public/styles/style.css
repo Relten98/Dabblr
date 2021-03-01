@@ -57,6 +57,7 @@ a:hover {
 
 #submit-article,
 #submit-video,
+#alert-btn,
 .child,
 button {
     font-size: medium;
@@ -87,9 +88,18 @@ button {
 
 #submit-article:hover,
 #submit-video:hover,
+#alert-btn:hover,
 button:hover {
     background-color: #506fd4;
     color: white;
+}
+
+.alert {
+    display: none;
+}
+
+.btn-close {
+    float: right;
 }
 
 .children {
