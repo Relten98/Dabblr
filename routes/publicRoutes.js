@@ -64,19 +64,20 @@ module.exports = (app) => {
                         articles.push(element);
                     }
                 });
-
-                // const hbData = {
-                //     parent: topic.parentTopicID,
-                //     header: topic.topicName,
-                //     videos,
-                //     articles,
-                //     children,
-                // };
-
-                // Information for video renderer
+                // The split between main and alt is made for styling purposes in index.
                 let [mainVideo, ...altVideos] = videos;
-                console.log("Video",mainVideo)
                 let [mainArticle, ...altArticles] = articles;
+                // For loop shortens the link that will be displayed for styling purposes. Also adds a score of 0 if media doesn't have one.
+                for (let media of [
+                    mainVideo,
+                    ...altVideos,
+                    mainArticle,
+                    ...altArticles,
+                ]) {
+                    let fullLink = media.tutorialLink.split('/');
+                    media.displayLink = fullLink[2] || media.tutorialLink;
+                    if (!media.votesSum) media.votesSum = 0;
+                }
                 res.render('index', {
                     mainArticle,
                     altArticles,
@@ -88,8 +89,6 @@ module.exports = (app) => {
                     header: topic.topicName,
                     children,
                 });
-                
-                console.log("HAYYYasdYYY",mainArticle)
             });
         } catch (error) {
             res.status(500).send(

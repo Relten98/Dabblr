@@ -1,12 +1,11 @@
 body {
     box-sizing: border-box;
-    background-color: #ECECEC;
+    background-color: #ececec;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     margin: 0;
     padding: 0;
 }
-
 
 /* Subject page css */
 
@@ -18,7 +17,7 @@ body {
 }
 
 .main-article {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     border-radius: 15px;
     font-size: large;
 }
@@ -27,17 +26,24 @@ body {
     font-weight: 700;
 }
 
-a, a:hover {
+a,
+a:hover {
     text-decoration: none;
     color: inherit;
 }
 
 .alt-article {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     border-radius: 15px;
 }
+#main-video-voting {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    z-index: 100;
+}
 .alt-video {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     border-radius: 15px;
 }
 
@@ -49,7 +55,11 @@ a, a:hover {
     color: white;
 }
 
-#submit-article, .child, button {
+#submit-article,
+#submit-video,
+#alert-btn,
+.child,
+button {
     font-size: medium;
     background-color: inherit;
     color: #506fd4;
@@ -57,10 +67,11 @@ a, a:hover {
     border: 3px solid #506fd4;
     border-radius: 15px;
     padding: 3px 10px;
-    transition: .3s background-color, .3s color;
+    transition: 0.3s background-color, 0.3s color;
 }
 
-#submit-article {
+#submit-article,
+#submit-video {
     border-radius: 5px;
 }
 
@@ -75,14 +86,41 @@ a, a:hover {
     border-radius: 10px;
 }
 
-#submit-article:hover, button:hover {
+#submit-article:hover,
+#submit-video:hover,
+#alert-btn:hover,
+button:hover {
     background-color: #506fd4;
     color: white;
+}
+
+.alert {
+    display: none;
+}
+
+.btn-close {
+    float: right;
 }
 
 .children {
     padding: 10px 0;
     border: 3px solid #506fd4;
     border-radius: 15px;
+}
+.video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
 
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
 }
