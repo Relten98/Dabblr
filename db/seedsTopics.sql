@@ -25,4 +25,13 @@ insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (
 insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (23, 'Quimm', '2020-11-22 15:46:27', '2020-01-20 07:39:25', 3);
 insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (24, 'Avaveo', '2020-08-21 04:08:10', '2020-02-28 01:45:44', 9);
 insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (25, 'Zoomdog', '2020-08-30 20:32:53', '2020-07-18 14:33:54', 12);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (26, 'Game Design', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 1);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (27, 'Level Design', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 26);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (28, 'Character Modeling', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 26);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (29, 'Architecture', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 27);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (30, 'Engineering', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 1);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (31, 'Electronics', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 30);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (32, 'Computers', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 31);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (33, 'Telecommications', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 32);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (33, 'Programming', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 33);
 SET FOREIGN_KEY_CHECKS=1;
