@@ -1,14 +1,14 @@
 SET FOREIGN_KEY_CHECKS=0;
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (1, 'video', 'https://e-recht24.de', '2020-10-19 14:12:42', '2020-10-22 14:00:11', 21, 12);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (2, 'article', 'https://vistaprint.com', '2020-02-17 10:48:00', '2020-07-26 05:20:45', 9, 4);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (3, 'video', 'http://squarespace.com', '2019-11-29 09:59:28', '2020-06-13 03:03:29', 6, 7);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (4, 'article', 'https://google.com.br', '2020-08-07 08:16:21', '2020-02-06 03:37:32', 7, 17);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (5, 'article', 'http://deliciousdays.com', '2020-04-11 08:48:39', '2020-11-18 18:54:16', 16, 17);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (6, 'video', 'https://tripadvisor.com', '2020-10-01 12:58:40', '2020-08-23 09:21:21', 19, 15);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (7, 'video', 'http://baidu.com', '2020-08-30 09:54:01', '2019-11-23 07:50:29', 11, 22);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (8, 'article', 'https://wisc.edu', '2020-01-01 20:33:26', '2020-05-06 19:16:44', 25, 8);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (9, 'video', 'http://simplemachines.org', '2020-11-25 23:17:55', '2020-02-14 12:09:50', 1, 4);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (10, 'video', 'http://desdev.cn', '2020-10-23 23:53:38', '2019-11-08 22:05:18', 25, 11);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (1, 'video', 'https://www.youtube.com/embed/6fd8MzE0tvU', '2020-10-19 14:12:42', '2020-10-22 14:00:11', 2, 12);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (2, 'article', 'https://vistaprint.com', '2020-02-17 10:48:00', '2020-07-26 05:20:45', 2, 4);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (3, 'video', 'https://www.youtube.com/embed/q0qPWSs75Y0', '2019-11-29 09:59:28', '2020-06-13 03:03:29', 2, 7);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (4, 'article', 'https://en.wikipedia.org/wiki/Filmmaking', '2020-08-07 08:16:21', '2020-02-06 03:37:32', 2, 17);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (5, 'article', 'http://deliciousdays.com', '2020-04-11 08:48:39', '2020-11-18 18:54:16', 2, 17);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (6, 'video', 'https://www.youtube.com/embed/gKwuvyNNwhA', '2020-10-01 12:58:40', '2020-08-23 09:21:21', 2, 15);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (7, 'video', 'https://www.youtube.com/embed/FPIOPc71REY', '2020-08-30 09:54:01', '2019-11-23 07:50:29', 2, 22);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (8, 'article', 'https://wisc.edu', '2020-01-01 20:33:26', '2020-05-06 19:16:44', 2, 8);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (9, 'video', 'https://www.youtube.com/embed/b87B7zyucgI', '2020-11-25 23:17:55', '2020-02-14 12:09:50', 2, 4);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (10, 'video', 'https://www.youtube.com/embed/YCZ3MqXOfYQ', '2020-10-23 23:53:38', '2019-11-08 22:05:18', 2, 11);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (11, 'video', 'https://angelfire.com', '2020-08-25 05:09:06', '2020-01-16 21:44:26', 18, 3);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (12, 'video', 'http://wisc.edu', '2019-11-02 20:46:11', '2020-05-30 16:53:13', 1, 13);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (13, 'video', 'https://usatoday.com', '2020-03-27 00:01:21', '2020-02-13 12:44:03', 5, 4);
@@ -55,7 +55,7 @@ insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (54, 'article', 'https://topsy.com', '2020-06-30 13:53:36', '2020-01-07 13:57:57', 8, 6);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (55, 'video', 'http://java.com', '2020-07-19 20:24:55', '2021-02-18 13:16:47', 12, 2);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (56, 'article', 'https://google.nl', '2020-12-15 08:10:02', '2020-07-13 06:02:56', 15, 11);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (57, 'video', 'http://xing.com', '2020-06-14 20:03:54', '2019-12-16 14:05:55', 4, 11);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (57, 'video', 'https://www.youtube.com/embed/V2udel2WylU', '2020-06-14 20:03:54', '2019-12-16 14:05:55', 4, 11);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (58, 'article', 'https://domainmarket.com', '2021-01-08 01:54:36', '2021-02-10 16:41:32', 23, 7);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (59, 'video', 'https://discuz.net', '2019-12-19 12:57:15', '2020-05-17 14:01:53', 11, 9);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (60, 'article', 'https://weather.com', '2020-05-16 20:45:49', '2020-05-11 00:25:26', 19, 12);
@@ -99,7 +99,7 @@ insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (98, 'article', 'https://stumbleupon.com', '2019-11-08 09:02:15', '2020-11-07 14:30:05', 4, 8);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (99, 'article', 'https://nih.gov', '2020-07-02 09:32:55', '2020-09-30 00:47:16', 24, 4);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (100, 'video', 'http://netvibes.com', '2020-12-24 15:01:37', '2020-03-09 04:24:11', 12, 19);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (101, 'video', 'http://google.de', '2020-03-26 10:49:14', '2020-09-05 03:38:34', 4, 5);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (101, 'video', 'https://www.youtube.com/embed/grnP3mduZkM', '2020-03-26 10:49:14', '2020-09-05 03:38:34', 4, 5);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (102, 'article', 'http://dailymail.co.uk', '2019-12-25 09:35:48', '2020-08-22 15:35:36', 10, 11);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (103, 'video', 'https://prweb.com', '2020-05-07 06:33:11', '2020-01-10 14:00:22', 21, 16);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (104, 'article', 'https://phoca.cz', '2019-11-05 10:21:41', '2019-11-27 06:23:04', 14, 8);
@@ -147,7 +147,7 @@ insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (146, 'article', 'https://seattletimes.com', '2020-08-04 04:56:38', '2020-02-28 12:32:08', 23, 8);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (147, 'video', 'http://google.nl', '2021-01-13 07:27:43', '2019-11-24 21:38:54', 18, 23);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (148, 'article', 'http://apple.com', '2020-08-27 03:43:06', '2020-11-18 16:38:28', 7, 23);
-insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (149, 'video', 'http://mediafire.com', '2020-04-28 17:13:48', '2019-11-14 00:21:56', 5, 23);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (149, 'video', 'https://www.youtube.com/embed/1xvXAQI2es4', '2020-04-28 17:13:48', '2019-11-14 00:21:56', 5, 23);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (150, 'video', 'https://miitbeian.gov.cn', '2020-01-27 16:47:40', '2020-10-28 20:12:00', 23, 6);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (151, 'article', 'https://bluehost.com', '2020-03-18 18:59:48', '2020-07-30 02:16:41', 11, 14);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (152, 'video', 'http://soundcloud.com', '2020-08-19 09:44:03', '2020-09-12 13:43:00', 25, 6);
@@ -199,6 +199,8 @@ insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (198, 'article', 'http://msn.com', '2020-02-14 08:40:05', '2020-10-31 11:04:21', 8, 14);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (199, 'video', 'https://moonfruit.com', '2020-08-05 20:15:25', '2020-09-22 00:43:11', 1, 9);
 insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (200, 'article', 'http://lulu.com', '2021-01-28 08:49:47', '2020-07-21 04:15:05', 18, 19);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (201, 'video', 'https://www.youtube.com/embed/AXnVp2zLTYY', '2021-01-28 08:49:47', '2020-07-21 04:15:05', 5, 9);
+insert into tutorials (id, tutorialType, tutorialLink, createdAt, updatedAt, fk_topicID, fk_userID) values (202, 'video', 'https://www.youtube.com/embed/grnP3mduZkM', '2021-01-28 08:49:47', '2020-07-21 04:15:05', 4, 10);
 
 
 SET FOREIGN_KEY_CHECKS=1;

@@ -83,6 +83,7 @@ module.exports = (app) => {
                     altArticles,
                     mainVideo,
                     altVideos,
+
                     // Parent will be used for parent button. Children will be used for children buttons.
                     parent,
                     header: topic.topicName,
