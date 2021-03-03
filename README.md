@@ -17,7 +17,9 @@ Users are allowed to vote on particularly well made tutorials, which will move t
 
 + Suggestions to similar topics based on their parent topic.
 
-!(dabblr)[public\screenshots\dabblr_home.png]
+Screenshot:
+![alt screenshot of the deployed site](https://raw.githubusercontent.com/Relten98/Dabblr/main/public/screenshots/dabblr_home.png)
+
 Live Website: [https://stormy-fjord-47951.herokuapp.com/]
 
   ## Installation
