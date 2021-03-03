@@ -35,4 +35,5 @@ insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (
 insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (33, 'Telecommications', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 32);
 insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (33, 'Programming', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 33);
 insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (34, 'Japanese Automobiles', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 3);
+insert into topics (id, topicName, createdAt, updatedAt, parentTopicID) values (35, 'Honda', '2020-01-19 07:24:33', '2020-12-13 23:20:09', 34);
 SET FOREIGN_KEY_CHECKS=1;
