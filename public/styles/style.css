@@ -59,10 +59,11 @@ a:hover {
 #submit-video,
 #alert-btn,
 .child,
+
 button {
     font-size: medium;
     background-color: inherit;
-    color: #36509c;
+    color: #0a122b;
     font-weight: 700;
     border: 3px solid #36509c;
     border-radius: 15px;
@@ -90,7 +91,7 @@ button {
 #submit-video:hover,
 #alert-btn:hover,
 button:hover {
-    background-color: #4561b6;
+    background-color: #36509c;
     color: white;
 }
 
