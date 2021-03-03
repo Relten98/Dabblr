@@ -1,6 +1,7 @@
 body {
     box-sizing: border-box;
-    background-color: #6d7283;
+    background-color: #506fd4;
+    color: #f8f8f8;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     margin: 0;
@@ -17,6 +18,7 @@ body {
 }
 
 .main-article {
+    border: 3px solid #f8f8f8;
     background-color: #f8f8f8;
     border-radius: 15px;
     font-size: large;
@@ -33,26 +35,30 @@ a:hover {
 }
 
 .alt-article {
+    border: 3px solid #f8f8f8;
+    color: #252b8d;
     background-color: #f8f8f8;
     border-radius: 15px;
 }
 #main-video-voting {
+    color: #f8f8f8;
     position: absolute;
     right: 5px;
     top: 10px;
     z-index: 100;
 }
 .alt-video {
+    color: #010d31;
     background-color: #f8f8f8;
     border-radius: 15px;
 }
 
 .alt-header {
+    color: #010d31;
     width: 100%;
     border-radius: 15px 15px 0px 0px;
     /* font-weight: 700; */
-    background-color: #0a1e5c;
-    color: white;
+    background-color: inherit;
 }
 
 #submit-article,
@@ -62,8 +68,8 @@ a:hover {
 
 button {
     font-size: medium;
-    background-color: inherit;
-    color: #0a122b;
+    background-color: whitesmoke;
+    color: #36509c;
     font-weight: 700;
     border: 3px solid #36509c;
     border-radius: 15px;
