@@ -1,6 +1,6 @@
 body {
     box-sizing: border-box;
-    background-color: #ececec;
+    background-color: #6d7283;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     margin: 0;
@@ -10,8 +10,8 @@ body {
 /* Subject page css */
 
 .header {
-    color: white;
-    background-color: #506fd4;
+    color: rgb(255, 255, 255);
+    background-color: #010d31;
     padding: 10px;
     border-radius: 15px;
 }
@@ -51,7 +51,7 @@ a:hover {
     width: 100%;
     border-radius: 15px 15px 0px 0px;
     /* font-weight: 700; */
-    background-color: #506fd4;
+    background-color: #0a1e5c;
     color: white;
 }
 
@@ -62,9 +62,9 @@ a:hover {
 button {
     font-size: medium;
     background-color: inherit;
-    color: #506fd4;
+    color: #36509c;
     font-weight: 700;
-    border: 3px solid #506fd4;
+    border: 3px solid #36509c;
     border-radius: 15px;
     padding: 3px 10px;
     transition: 0.3s background-color, 0.3s color;
@@ -90,7 +90,7 @@ button {
 #submit-video:hover,
 #alert-btn:hover,
 button:hover {
-    background-color: #506fd4;
+    background-color: #4561b6;
     color: white;
 }
 
@@ -104,7 +104,7 @@ button:hover {
 
 .children {
     padding: 10px 0;
-    border: 3px solid #506fd4;
+    border: 3px solid #36509c;
     border-radius: 15px;
 }
 .video-container {
