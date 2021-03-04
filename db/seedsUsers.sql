@@ -25,6 +25,4 @@ insert into users (id, UserName, email, password, createdAt, updatedAt) values (
 insert into users (id, UserName, email, password, createdAt, updatedAt) values (23, 'Lindsay', 'lvinnickm@amazon.co.jp', 'ywhRHfa', '2021-02-04 05:11:43', '2020-09-23 05:30:59');
 insert into users (id, UserName, email, password, createdAt, updatedAt) values (24, 'Cathlene', 'cgreenleafn@dmoz.org', 'IKysO0OR', '2020-09-04 05:17:50', '2020-11-03 12:31:59');
 insert into users (id, UserName, email, password, createdAt, updatedAt) values (25, 'Carissa', 'cduddleo@sciencedaily.com', 'U1Dm40Tbw9i', '2020-05-12 21:58:34', '2020-10-30 05:22:34');
-
-
 SET FOREIGN_KEY_CHECKS=1;
